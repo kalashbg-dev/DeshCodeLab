@@ -48,7 +48,7 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ## 📄 License
 
-This project is under License. See the `LICENSE` file for more details.
+This project is under License. See the [LICENSE](LICENSE) file for more details.
 
 ---
 
