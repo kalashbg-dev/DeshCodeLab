@@ -3,11 +3,38 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
+// Función para detectar si es un dispositivo táctil o está en vista móvil
+const isTouchDevice = () => {
+  // Verificar si el ancho de la pantalla es menor a 768px (vista móvil)
+  if (typeof window === 'undefined') return false;
+  
+  const isMobileView = window.innerWidth < 768;
+  
+  // Verificación básica de soporte táctil
+  const hasTouchSupport = (
+    'ontouchstart' in window ||
+    (window.navigator.maxTouchPoints > 0) ||
+    (window.navigator as any).msMaxTouchPoints > 0
+  );
+
+  // Considerar como dispositivo táctil si es una vista móvil o si tiene soporte táctil
+  return isMobileView || hasTouchSupport;
+}
+
 export default function CursorFollower() {
+  const [isTouchDeviceState, setIsTouchDevice] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
 
   useEffect(() => {
+    // Verificar si es un dispositivo táctil
+    const touchDevice = isTouchDevice()
+    setIsTouchDevice(touchDevice)
+    
+    // Si es un dispositivo táctil, no hacer nada más
+    if (touchDevice) return
+    
+    // El resto del código solo se ejecuta en dispositivos no táctiles
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
@@ -33,6 +60,9 @@ export default function CursorFollower() {
       })
     }
   }, [])
+
+  // No renderizar en dispositivos táctiles
+  if (isTouchDeviceState) return null
 
   return (
     <>
