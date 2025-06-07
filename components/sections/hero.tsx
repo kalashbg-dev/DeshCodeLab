@@ -27,7 +27,7 @@ export default function Hero() {
   if (!mounted) return null
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background">
+    <section className="relative min-h-screen md:min-h-0 md:h-auto md:py-20 flex items-center justify-center overflow-visible bg-gradient-to-br from-background via-muted/30 to-background">
       {/* Particle Background */}
       <ParticleField />
 
@@ -35,17 +35,17 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 py-10 md:py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-6 md:space-y-8"
             >
-                <div className="space-y-4 hidden md:block">
+                <div className="space-y-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export default function Hero() {
               className="relative"
             >
               <div className="relative w-72 h-96 md:w-80 md:h-[450px] mx-auto">
-                <div className="w-full h-full rounded-xl overflow-hidden border-4 border-white/20 shadow-xl transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl hover:border-white/30">
+                <div className="w-full h-full rounded-xl overflow-hidden border-4 border-white/20 shadow-xl transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl hover:border-white/30 max-w-xs mx-auto">
                   <Image
                     src="/profile.JPEG"
                     alt="Kalashnikov Bello"
@@ -166,13 +166,13 @@ export default function Hero() {
               </div>
 
               {/* Floating Elements */}
-              <motion.div
+              <a href={process.env.NEXT_PUBLIC_CV} target="_blank" rel="noopener noreferrer"><motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
                 className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg"
               >
                 <Download className="h-6 w-6" />
-              </motion.div>
+              </motion.div></a>
             </motion.div>
           </div>
         </div>

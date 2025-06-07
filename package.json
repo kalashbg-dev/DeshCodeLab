@@ -1,6 +1,6 @@
 {
-  "name": "my-v0-project",
-  "version": "0.1.0",
+  "name": "my-landing-deshcode",
+  "version": "1.9.6",
   "private": true,
   "scripts": {
     "dev": "next dev",

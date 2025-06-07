@@ -20,6 +20,11 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
+    allowedDevOrigins: [
+      'localhost',
+      '127.0.0.1',
+      '192.168.1.17' // Agrega aquí la IP de tu red local
+    ],
   },
 }
 
