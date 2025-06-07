@@ -294,7 +294,9 @@ export default function Contact() {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="tu@email.com"
+                      placeholder={
+                        language === "es" ? "tu@email.com" : "Your@email"
+                      }
                       className={errors.email ? "border-red-500" : ""}
                     />
                     {errors.email && (
