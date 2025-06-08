@@ -2,68 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Update color palette for more dramatic contrast and refined aesthetics */
 :root {
-  /* Light mode colors - more refined monochromatic with subtle accents */
-  --primary: 221.2 83.2% 53.3%; /* #3b6bdb - Refined professional blue */
-  --primary-foreground: 210 40% 98%;
 
-  --secondary: 210 40% 96%; /* #2952cc - Deeper complementary blue */
-  --secondary-foreground: 222.2 84% 4.9%;
+  --primary: 215 83.2% 50.8%;    /* #3366cc - Azul principal: ligeramente más fresco, manteniendo el impacto. */
+  --primary-foreground: 210 40% 98%; /* #f8fafc - Texto claro para primary. */
 
-  --accent: 210 40% 96%; /* #7c3aed - Subtle violet accent */
-  --accent-foreground: 222.2 84% 4.9%;
+  --secondary: 210 20% 97%;        /* #f2f5f8 - Gris azulado muy suave, casi blanco, para superficies secundarias. */
+  --secondary-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para secondary. */
 
-  --background: 0 0% 100%; /* #ffffff - Pure white */
-  --foreground: 222.2 84% 4.9%; /* Rich dark blue-gray */
+  --accent: 260 70% 65%;          /* #9a5bff - Violeta vibrante: un poco más claro para un acento moderno. */
+  --accent-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para accent. */
 
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --background: 0 0% 100%;        /* #ffffff - Fondo principal blanco puro. */
+  --foreground: 222.2 84% 4.9%;   /* #0c1220 - Texto principal oscuro (azul-gris rico, casi negro). */
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;              /* #ffffff - Las tarjetas son blancas, se elevan con sombra y borde sutil. */
+  --card-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para card. */
 
-  --muted: 210 40% 96%; /* #f5f7fa - Softer muted background */
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --popover: 0 0% 100%;           /* #ffffff - Popovers blancos, igual que cards. */
+  --popover-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para popover. */
 
-  --destructive: 0 84.2% 60.2%; /* #e11d48 - Refined red */
-  --destructive-foreground: 210 40% 98%;
+  --muted: 210 20% 97%;           /* #f2f5f8 - Fondos y elementos muted, igual que secondary para coherencia. */
+  --muted-foreground: 215.4 16.3% 40.9%; /* #607080 - Gris medio: un poco más oscuro para mejor legibilidad. */
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221.2 83.2% 53.3%;
+  --destructive: 0 84.2% 55.2%;   /* #d62f48 - Rojo fuerte: ligeramente más profundo para impacto. */
+  --destructive-foreground: 210 40% 98%; /* #f8fafc - Texto claro para destructive. */
+
+  --border: 214.3 20% 90%;        /* #e0e6ed - Borde gris claro: más suave y sutil. */
+  --input: 214.3 20% 90%;         /* #e0e6ed - Inputs con el mismo borde para consistencia. */
+  --ring: 215 83.2% 50.8%;        /* #3366cc - Anillo de enfoque primario para accesibilidad. */
   --radius: 0.5rem;
 }
 
 .dark {
-  /* Dark mode colors - more sophisticated and dramatic */
-  --background: 222.2 84% 4.9%; /* #0c1220 - Deep blue-black */
-  --foreground: 210 40% 98%; /* #f8fafc - Soft white */
 
-  --primary: 217.2 91.2% 59.8%; /* #5583e6 - Vibrant blue */
-  --primary-foreground: 222.2 84% 4.9%;
+  --background: 225 20% 8%;       /* #10141a - Fondo principal: Negro azulado profundo y muy oscuro. */
+  --foreground: 210 40% 98%;      /* #f8fafc - Texto principal: Blanco suave. */
 
-  --secondary: 217.2 32.6% 17.5%; /* #93b0f9 - Lighter blue */
-  --secondary-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 68%;     /* #78aaff - Azul vibrante y brillante: un poco más luminoso para destacar en oscuro. */
+  --primary-foreground: 225 20% 8%; /* #10141a - Texto oscuro sobre primary (alineado con el nuevo background). */
 
-  --accent: 217.2 32.6% 17.5%; /* #b992f9 - Soft violet */
-  --accent-foreground: 222.2 84% 4.9%;
+  --secondary: 220 15% 15%;       /* #242931 - Gris azulado oscuro: superficie para elementos secundarios, más integrado. */
+  --secondary-foreground: 210 40% 90%; /* #e1e7ec - Texto ligeramente más claro sobre secondary. */
 
-  --card: 222.2 84% 4.9%; /* #121a2e - Slightly lighter than background */
-  --card-foreground: 210 40% 98%;
+  --accent: 260 70% 78%;          /* #c499ff - Violeta claro y vibrante: un poco más luminoso para acentos. */
+  --accent-foreground: 225 20% 8%; /* #10141a - Texto oscuro sobre accent (alineado con el nuevo background). */
 
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
+  --card: 220 18% 12%;            /* #1b2028 - Fondo de tarjeta: ligeramente más claro que el background para profundidad. */
+  --card-foreground: 210 40% 98%; /* #f8fafc - Texto claro sobre card. */
 
-  --muted: 217.2 32.6% 17.5%; /* #1e2a45 - Dark blue-gray */
-  --muted-foreground: 215 20.2% 65.1%;
+  --popover: 220 18% 12%;         /* #1b2028 - Popover igual que card. */
+  --popover-foreground: 210 40% 98%; /* #f8fafc - Texto claro sobre popover. */
 
-  --destructive: 0 62.8% 30.6%; /* #be123c - Darker red */
-  --destructive-foreground: 210 40% 98%;
+  --muted: 220 15% 15%;           /* #242931 - Fondo muted (igual que secondary). */
+  --muted-foreground: 215 20.2% 70%; /* #9fa8b3 - Gris claro para texto muted: muy legible, un poco más oscuro. */
 
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 224.3 76.3% 94.1%;
+  --destructive: 0 62.8% 45.6%;   /* #d94a64 - Rojo más suave pero visible: un poco más saturado. */
+  --destructive-foreground: 210 40% 98%; /* #f8fafc - Texto claro sobre destructive. */
+
+  --border: 220 15% 22%;          /* #363d47 - Borde oscuro: más sutil y menos contrastante. */
+  --input: 220 15% 22%;           /* #363d47 - Input oscuro: consistente con el borde. */
+  --ring: 224.3 76.3% 86.1%;      /* #c0d1ff - Anillo de enfoque: aún más claro para máxima distinción. */
 }
 
 /* Ensure fonts apply correctly in base layer */
@@ -126,6 +125,7 @@
 
   /* Gradient text */
   .gradient-text {
+    /* Mantiene el gradiente de primary a primary para un color sólido, pero con nombre de gradiente */
     @apply bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent;
   }
 
@@ -136,7 +136,8 @@
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     transform: translateZ(0);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Usar border-border para el borde */
+    border: 1px solid hsl(var(--border)); /* Ajustado para usar la variable --border */
   }
 
   .crystal-btn::before {
@@ -146,16 +147,17 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+    /* Gradiente con --foreground para un brillo que contraste */
+    background: linear-gradient(90deg, transparent 0%, hsla(var(--foreground), 0.2) 50%, transparent 100%);
     z-index: 1;
     pointer-events: none;
     transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    /* Removed will-change for better performance */
   }
 
   .crystal-btn:hover {
     transform: scale(1.03) translateY(-2px) translateZ(0);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* Sombra más sutil y general */
+    box-shadow: 0 8px 16px hsla(var(--foreground), 0.15); /* Sombra ajustada */
   }
 
   .crystal-btn:hover::before {
@@ -218,12 +220,15 @@
     width: 2.5rem;
     height: 0.75rem;
     border-radius: 0.375rem;
-    background-color: rgba(var(--primary-rgb), 0.2);
+    /* Usar hsl(var(--primary)) con opacidad para el fondo */
+    background-color: hsla(var(--primary), 0.2);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(var(--primary-rgb), 0.1);
+    /* Sombra más sutil */
+    box-shadow: 0 1px 3px hsla(var(--foreground), 0.1);
+    /* Borde basado en primary */
+    border: 1px solid hsla(var(--primary), 0.1);
   }
 
   .carousel-indicator::after {
@@ -233,13 +238,14 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(var(--primary-rgb), 0.1);
+    /* Fondo con opacidad de primary */
+    background-color: hsla(var(--primary), 0.1);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
   }
 
   .carousel-indicator:hover {
-    background-color: rgba(var(--primary-rgb), 0.3);
+    background-color: hsla(var(--primary), 0.3);
     transform: translateY(-2px);
   }
 
@@ -247,22 +253,23 @@
     background-color: hsl(var(--primary));
     width: 3rem;
     transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(var(--primary-rgb), 0.4);
+    /* Sombra más pronunciada del primary */
+    box-shadow: 0 2px 6px hsla(var(--primary), 0.4);
   }
 
   .carousel-indicator:focus-visible {
-    outline: 2px solid hsl(var(--primary));
+    outline: 2px solid hsl(var(--ring)); /* Usar --ring para consistencia de focus */
     outline-offset: 2px;
   }
 
   /* Versión para modo oscuro */
   .dark .carousel-indicator {
-    background-color: rgba(var(--primary-rgb), 0.15);
-    border-color: rgba(var(--primary-rgb), 0.2);
+    background-color: hsla(var(--primary), 0.15);
+    border-color: hsla(var(--primary), 0.2);
   }
 
   .dark .carousel-indicator:hover {
-    background-color: rgba(var(--primary-rgb), 0.25);
+    background-color: hsla(var(--primary), 0.25);
   }
 
   .dark .carousel-indicator.active {
@@ -296,11 +303,13 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    /* Usar hsl con opacidad para glow, y primary */
+    text-shadow: 0 0 20px hsla(var(--primary), 0.5);
   }
 
   .dark .text-glow {
-    text-shadow: 0 0 5px rgba(var(--primary-rgb), 0.3);
+    /* Ajustar glow para modo oscuro, más sutil */
+    text-shadow: 0 0 5px hsla(var(--primary), 0.3);
   }
 
   /* Animation utilities */
@@ -340,15 +349,17 @@
 
 /* Grid pattern */
 .grid-pattern {
-  background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
-    linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+  /* Colores más claros para el patrón de la cuadrícula en modo claro */
+  background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
   background-size: 4rem 4rem;
   opacity: 0.2;
 }
 
 .dark .grid-pattern {
-  background-image: linear-gradient(to right, #27272a 1px, transparent 1px),
-    linear-gradient(to bottom, #27272a 1px, transparent 1px);
+  /* Colores más oscuros para el patrón de la cuadrícula en modo oscuro */
+  background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
 }
 
 /* Animations - optimized */
@@ -417,36 +428,40 @@
 }
 
 .aurora-light-1 {
+  /* Usar primary y accent para un gradiente coherente */
+  background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
   width: 300px;
   height: 300px;
-  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
   top: 10%;
   left: 10%;
   animation-delay: 0s;
 }
 
 .aurora-light-2 {
+  /* Usar primary y un color complementario */
+  background: linear-gradient(45deg, hsl(200 80% 45%), hsl(var(--primary))); /* Azul cian a Primary */
   width: 200px;
   height: 200px;
-  background: linear-gradient(45deg, #06b6d4, #3b82f6);
   top: 60%;
   right: 20%;
   animation-delay: 2s;
 }
 
 .aurora-light-3 {
+  /* Usar accent y un color vibrante para contraste */
+  background: linear-gradient(45deg, hsl(var(--accent)), hsl(0 70% 60%)); /* Accent a un rojo-rosa */
   width: 250px;
   height: 250px;
-  background: linear-gradient(45deg, #8b5cf6, #ec4899);
   bottom: 20%;
   left: 30%;
   animation-delay: 4s;
 }
 
 .aurora-light-4 {
+  /* Usar otro par de colores para diversidad, quizás un verde y un azul */
+  background: linear-gradient(45deg, hsl(140 70% 45%), hsl(200 80% 45%)); /* Verde a Azul cian */
   width: 180px;
   height: 180px;
-  background: linear-gradient(45deg, #10b981, #06b6d4);
   top: 30%;
   right: 10%;
   animation-delay: 6s;
@@ -487,6 +502,7 @@ html {
   bottom: -2.5rem;
   left: 24px;
   width: 2px;
+  /* El gradiente se mantiene con primary */
   background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--primary)));
 }
 
@@ -515,17 +531,17 @@ html {
 }
 
 .whatsapp-chatbot .chatbox::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: hsla(var(--background), 0.05); /* Usar background con opacidad */
   border-radius: 10px;
 }
 
 .whatsapp-chatbot .chatbox::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
+  background: hsla(var(--foreground), 0.1); /* Usar foreground con opacidad */
   border-radius: 10px;
 }
 
 .whatsapp-chatbot .chatbox::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: hsla(var(--foreground), 0.2); /* Usar foreground con opacidad */
 }
 
 /* Add tag styles for project cards */
@@ -538,28 +554,28 @@ html {
 }
 
 .tag-developer {
-  background-color: rgba(59, 130, 246, 0.1);
+  background-color: hsla(var(--primary), 0.1); /* Usar primary con opacidad */
   color: hsl(var(--primary));
 }
 
 .tag-design {
-  background-color: rgba(139, 92, 246, 0.1);
+  background-color: hsla(var(--accent), 0.1); /* Usar accent con opacidad */
   color: hsl(var(--accent));
 }
 
 .tag-data {
-  background-color: rgba(16, 185, 129, 0.1);
-  color: #10b981;
+  background-color: hsla(140 70% 45%, 0.1); /* Nuevo color: un verde */
+  color: hsl(140 70% 45%);
 }
 
 .tag-ai {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: #f59e0b;
+  background-color: hsla(40 90% 50%, 0.1); /* Nuevo color: un naranja vibrante */
+  color: hsl(40 90% 50%);
 }
 
 .tag-ecommerce {
-  background-color: rgba(236, 72, 153, 0.1);
-  color: #ec4899;
+  background-color: hsla(330 70% 60%, 0.1); /* Nuevo color: un rosa fuerte */
+  color: hsl(330 70% 60%);
 }
 
 /* Glitch effect for project titles - optimized */
@@ -573,8 +589,8 @@ html {
 /* Only apply complex glitch effect on hover and on capable devices */
 @media (prefers-reduced-motion: no-preference) {
   .glitch-effect:hover {
-    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0
-      rgba(0, 0, 255, 0.75);
+    /* Sombras usando primary y accent para coherencia de paleta */
+    text-shadow: 0.05em 0 0 hsla(var(--primary), 0.75), -0.025em -0.05em 0 hsla(var(--accent), 0.75), 0.025em 0.05em 0 hsla(var(--foreground), 0.75);
     animation: glitch 500ms infinite;
   }
 
