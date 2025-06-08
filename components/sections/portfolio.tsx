@@ -15,7 +15,7 @@ const projects = [
       en: "Platform for Dominican Interday Market Analysis with Advanced Statistical KPIs, Insights with filters and Prediction Models",
       es: "Plataforma para análisis del mercado interdiario dominicano con KPIs estadísticos avanzados, insights con filtros y modelos de predicción",
     },
-    image: "/Agrodash-main.png",
+    image: "/Agrodash-main.webp",
     technologies: ["Python", "Streamlit", "Prophet", "CSS"],
     category: "data",
     links: {
@@ -32,7 +32,7 @@ const projects = [
       en: "A tool for managing exchange rates, tracking conversions, and analyzing historical data.",
       es: "Una herramienta para gestionar tasas de cambio, rastrear conversiones y analizar datos históricos.",
     },
-    image: "converter.png",
+    image: "converter.webp",
     technologies: [
       "Typescript",
       "Tailwind CSS",
@@ -53,7 +53,7 @@ const projects = [
       en: "Telegram Group Management Bot Template",
       es: "Modelo para Bot de gestión de grupos de Telegram.",
     },
-    image: "/hojutsu_bot.jpg",
+    image: "/hojutsu_bot.webp",
     technologies: ["Python", "Docker", "PostgreSQL", "FastAPI"],
     category: "tools",
     links: {
@@ -68,7 +68,7 @@ const projects = [
       en: "An automated tool to quickly set up a professional development environment",
       es: "Una herramienta automatizada para configurar rápidamente un entorno de desarrollo profesional",
     },
-    image: "mintdev.png",
+    image: "mintdev.webp",
     technologies: ["Shell"],
     category: "tools",
     links: {
@@ -83,7 +83,7 @@ const projects = [
       en: "Customizable and trainable Chatbot model for entrepreneurs and websites",
       es: "Modelo de Chatbot personalizable y entrenable para emprendedores y páginas web",
     },
-    image: "ChatBotDEMo.png",
+    image: "ChatBotDEMo.webp",
     technologies: ["JavaScript", "CSS", "HTML"],
     category: "ai",
     links: {
@@ -100,8 +100,8 @@ const projects = [
       es: "WebApp de análisis de criptomonedas con dashboard, noticias, portafolio, diario de trading, calculadora de posiciones, rastreador de ballenas e IA personal.",
     },
     image: {
-      en: "CoinLarimarEN.png",
-      es: "CoinLarimarES.png",
+      en: "CoinLarimarEN.webp",
+      es: "CoinLarimarES.webp",
     },
     technologies: ["Flutter", "Firebase", "Make", "Vertex AI"],
     category: "web",
@@ -119,8 +119,8 @@ const projects = [
       es: "Una plataforma de e-commerce de dropshipping de fragancias",
     },
     image: {
-      en: "SillageWorld.png",
-      es: "MundoSillage.png",
+      en: "SillageWorld.webp",
+      es: "MundoSillage.webp",
     },
     technologies: ["Vue.js", "Node.js", "MongoDB", "Stripe"],
     category: "web",

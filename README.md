@@ -1,6 +1,6 @@
 # 🚀DeshCode By KalashDEV
 
-![deshcode_ss.png](public/deshcode_ss.png)
+![deshcode_ss.webp](public/deshcode_ss.webp)
 
 A modern and responsive web portfolio built with Next.js, featuring my skills as a full-stack developer and data analyst.
 

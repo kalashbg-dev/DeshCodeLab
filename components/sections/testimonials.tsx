@@ -12,7 +12,7 @@ const testimonials = [
     name: "Albert Cuevas",
     role: { en: "Ingeniero Químico", es: "BS-Chemistry"},
     company: " ",
-    image: "/albert.jpg?height=80&width=80",
+    image: "/albert.webp?height=80&width=80",
     rating: 4,
     link: "https://x.com/albertcuevas",
     content: {
@@ -25,7 +25,7 @@ const testimonials = [
     name: "Yesrael Rodriguez",
     role: { en: "CEO", es: "CEO" },
     company: "Kairos Experience",
-    image: "/yes_profile.jpeg?height=80&width=80",
+    image: "/yes_profile.webp?height=80&width=80",
     rating: 5,
     link: "https://www.linkedin.com/in/yesrael-rodriguez/",
     content: {
@@ -38,7 +38,7 @@ const testimonials = [
     name: "Nayeline Medina",
     role: { en: "Medical Doctor & Consultant ", es: "Médico & Consultora" },
     company: "Health Equity | Diversity and Inclusion",
-    image: "/nay_profile.jpeg?height=80&width=80",
+    image: "/nay_profile.webp?height=80&width=80",
     rating: 4,
     link: "https://www.linkedin.com/in/nayelinemedina/",
     content: {

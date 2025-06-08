@@ -153,7 +153,7 @@ export default function Hero() {
               <div className="relative w-72 h-96 md:w-80 md:h-[450px] mx-auto">
                 <div className="w-full h-full rounded-xl overflow-hidden border-4 border-white/20 shadow-xl transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl hover:border-white/30 max-w-xs mx-auto">
                   <Image
-                    src="/profile.JPEG"
+                    src="/profile.webp"
                     alt="Kalashnikov Bello"
                     fill
                     style={{ objectFit: "cover", objectPosition: "center top" }}
