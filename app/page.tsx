@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <LanguageProvider>
-        <div ref={containerRef} className="relative">
+        <div ref={containerRef} className="relative flex flex-col min-h-full">
           <AnimatePresence mode="wait">
             {isLoading ? (
               <LoadingScreen key="loading" />
@@ -64,7 +64,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="relative overflow-hidden"
+                className="relative flex-1 flex flex-col w-full overflow-x-hidden"
               >
                 {/* Enhanced Navigation */}
                 <Navbar />

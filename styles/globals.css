@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global overflow and responsive fixes */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem; /* Account for fixed header */
+}
+
+/* Ensure images and media are responsive */
+img, video, iframe, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Improve typography and spacing */
+body {
+  @apply text-foreground bg-background;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 :root {
 
   --primary: 215 83.2% 50.8%;    /* #3366cc - Azul principal: ligeramente más fresco, manteniendo el impacto. */

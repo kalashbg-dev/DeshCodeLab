@@ -27,13 +27,15 @@ export default function Hero() {
   if (!mounted) return null
 
   return (
-    <section className="relative min-h-screen md:min-h-0 md:h-auto md:py-20 flex items-center justify-center overflow-visible bg-gradient-to-br from-background via-muted/30 to-background">
+    <section className="relative min-h-[100dvh] md:min-h-0 md:h-auto md:py-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background">
       {/* Particle Background */}
-      <ParticleField />
+      <div className="absolute inset-0 overflow-hidden">
+        <ParticleField />
+      </div>
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000" />
+      {/* Gradient Orbs - Constrained to viewport */}
+      <div className="absolute top-1/4 left-[10%] w-[80vw] h-[80vw] max-w-[24rem] max-h-[24rem] bg-primary/20 rounded-full blur-3xl animate-pulse pointer-events-none" />
+      <div className="absolute bottom-1/4 right-[10%] w-[80vw] h-[80vw] max-w-[24rem] max-h-[24rem] bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10 py-10 md:py-20">
         <div className="max-w-6xl mx-auto">

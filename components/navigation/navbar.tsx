@@ -95,30 +95,40 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <motion.div
           initial={false}
-          animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-          className="md:hidden overflow-hidden"
+          animate={{
+            height: isOpen ? 'auto' : 0,
+            opacity: isOpen ? 1 : 0,
+            overflow: 'hidden',
+          }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="md:hidden w-full absolute left-0 right-0 bg-background/95 backdrop-blur-lg shadow-lg"
+          style={{ top: '100%' }}
         >
-          <div className="py-4 space-y-4">
+          <div className="p-4 space-y-3 max-h-[calc(100vh-4rem)] overflow-y-auto">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left text-muted-foreground hover:text-primary transition-colors"
+                className="block w-full text-left px-4 py-3 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted/50 transition-colors"
               >
-                {language === "es" ? item.label.es : item.label.en}
+                {language === 'es' ? item.label.es : item.label.en}
               </button>
             ))}
-            <div className="flex items-center justify-between pt-4 border-t border-border">
+            <div className="flex items-center justify-between pt-4 mt-2 border-t border-border">
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setLanguage(language === "en" ? "es" : "en")}
-                className="flex items-center gap-2"
+                onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
+                className="flex items-center gap-2 px-4"
               >
-                <Globe className="h-4 w-4" />
-                {language.toUpperCase()}
+                <Globe className="h-4 w-4 flex-shrink-0" />
+                <span className="truncate">
+                  {language === 'en' ? 'English' : 'Español'}
+                </span>
               </Button>
-              <ThemeToggle />
+              <div className="px-2">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </motion.div>
