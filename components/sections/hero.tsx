@@ -172,6 +172,7 @@ export default function Hero() {
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
                 className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg"
+                whileHover={{ scale: 1.1 }}
               >
                 <Download className="h-6 w-6" />
               </motion.div></a>

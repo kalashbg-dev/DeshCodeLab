@@ -1,10 +1,8 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react"
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 import GlassCard from "@/components/ui/glass-card"
@@ -12,142 +10,57 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
-
-interface FormData {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
-
-interface FormErrors {
-  name?: string
-  email?: string
-  subject?: string
-  message?: string
-}
+import { submitContactForm } from "@/app/actions/contact"
 
 export default function Contact() {
   const { language } = useLanguage()
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 })
   const { toast } = useToast()
 
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
+  // Form state
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
+  type FormError = { path: string; message: string }
+  const [state, setState] = useState<{ success: boolean; message: string; errors: FormError[] }>({ success: false, message: '', errors: [] })
+  const [pending, setPending] = useState(false)
 
-  const [errors, setErrors] = useState<FormErrors>({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {}
-
-    if (!formData.name.trim()) {
-      newErrors.name = language === "es" ? "El nombre es requerido" : "Name is required"
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = language === "es" ? "El email es requerido" : "Email is required"
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = language === "es" ? "Email inválido" : "Invalid email"
-    }
-
-    if (!formData.subject.trim()) {
-      newErrors.subject = language === "es" ? "El asunto es requerido" : "Subject is required"
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = language === "es" ? "El mensaje es requerido" : "Message is required"
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (!validateForm()) return
-
-    setIsSubmitting(true)
-
-    try {
-      // Send email using EmailJS or similar service
-      const formElement = e.target as HTMLFormElement
-      const formAction = `https://formsubmit.co/${process.env.NEXT_PUBLIC_EMAIL}`
-
-      // Create a hidden form to submit
-      const hiddenForm = document.createElement("form")
-      hiddenForm.method = "POST"
-      hiddenForm.action = formAction
-      hiddenForm.style.display = "none"
-
-      // Add form data
-      for (const key in formData) {
-        const input = document.createElement("input")
-        input.type = "hidden"
-        input.name = key
-        input.value = formData[key as keyof FormData]
-        hiddenForm.appendChild(input)
-      }
-
-      // Add redirect
-      const redirectInput = document.createElement("input")
-      redirectInput.type = "hidden"
-      redirectInput.name = "_next"
-      redirectInput.value = window.location.href
-      hiddenForm.appendChild(redirectInput)
-
-      // Add captcha
-      const captchaInput = document.createElement("input")
-      captchaInput.type = "hidden"
-      captchaInput.name = "_captcha"
-      captchaInput.value = "true"
-      hiddenForm.appendChild(captchaInput)
-
-      // Add subject
-      const subjectInput = document.createElement("input")
-      subjectInput.type = "hidden"
-      subjectInput.name = "_subject"
-      subjectInput.value = `Nuevo mensaje de ${formData.name}: ${formData.subject}`
-      hiddenForm.appendChild(subjectInput)
-
-      // Append to body and submit
-      document.body.appendChild(hiddenForm)
-      hiddenForm.submit()
-
-      toast({
-        title: language === "es" ? "¡Mensaje enviado!" : "Message sent!",
-        description:
-          language === "es"
-            ? "Gracias por contactarme. Te responderé pronto."
-            : "Thank you for contacting me. I'll get back to you soon.",
-      })
-
-      setFormData({ name: "", email: "", subject: "", message: "" })
-    } catch (error) {
-      toast({
-        title: language === "es" ? "Error" : "Error",
-        description:
-          language === "es" ? "Hubo un problema al enviar el mensaje." : "There was a problem sending the message.",
-        variant: "destructive",
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
+  // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
-    // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }))
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setPending(true)
+    setState({ success: false, message: '', errors: [] })
+    
+    // Store the form element reference before the async operation
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    
+    try {
+      // Use the stored form data
+      const result = await submitContactForm(state, formData)
+      setState({ success: true, message: language === 'es' ? '¡Mensaje enviado!' : 'Message sent!', errors: [] })
+      // Reset the form using the stored reference
+      form.reset()
+    } catch (error: unknown) {
+      if (error && typeof error === 'object' && 'message' in error) {
+        const err = error as { message: string; errors?: FormError[] }
+        setState({ success: false, message: err.message, errors: err.errors || [] })
+      } else {
+        setState({ success: false, message: language === 'es' ? 'Error al enviar el mensaje' : 'Error sending message', errors: [] })
+      }
+    } finally {
+      setPending(false)
     }
+  }
+
+  // Helper function to get error message for a field
+  const getFieldError = (fieldName: string) => {
+    if (!state.errors) return null
+    const error = state.errors.find((err) => err.path === fieldName)
+    return error ? error.message : null
   }
 
   const contactInfo = [
@@ -170,6 +83,16 @@ export default function Contact() {
       href: "#",
     },
   ]
+
+  useEffect(() => {
+    if (state.message) {
+      toast({
+        title: state.success ? (language === "es" ? "¡Mensaje enviado!" : "Message sent!") : (language === "es" ? "Error" : "Error"),
+        description: state.message,
+        variant: state.success ? "default" : "destructive",
+      })
+    }
+  }, [state, toast, language])
 
   return (
     <section ref={ref} id="contact" className="py-20 bg-muted/30 relative overflow-hidden">
@@ -257,11 +180,10 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <GlassCard className="p-6">
-              <form
+              <form 
+                id="contact-form"
                 onSubmit={handleSubmit}
                 className="space-y-6"
-                action={`https://formsubmit.co/${process.env.NEXT_PUBLIC_EMAIL}`}
-                method="POST"
               >
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -271,15 +193,16 @@ export default function Contact() {
                     <Input
                       id="name"
                       name="name"
+                      placeholder={language === "es" ? "Tu nombre" : "Your name"}
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder={language === "es" ? "Tu nombre" : "Your name"}
-                      className={errors.name ? "border-red-500" : ""}
+                      className={getFieldError('name') ? "border-red-500" : ""}
+                      aria-describedby="name-error"
                     />
-                    {errors.name && (
-                      <p className="text-red-500 text-xs mt-1 flex items-center">
+                    {getFieldError('name') && (
+                      <p className="text-red-500 text-xs mt-1 flex items-center" id="name-error">
                         <AlertCircle className="h-3 w-3 mr-1" />
-                        {errors.name}
+                        {getFieldError('name')}
                       </p>
                     )}
                   </div>
@@ -292,17 +215,16 @@ export default function Contact() {
                       id="email"
                       name="email"
                       type="email"
+                      placeholder={language === "es" ? "tu@email.com" : "your@email.com"}
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder={
-                        language === "es" ? "tu@email.com" : "Your@email"
-                      }
-                      className={errors.email ? "border-red-500" : ""}
+                      className={getFieldError('email') ? "border-red-500" : ""}
+                      aria-describedby="email-error"
                     />
-                    {errors.email && (
-                      <p className="text-red-500 text-xs mt-1 flex items-center">
+                    {getFieldError('email') && (
+                      <p className="text-red-500 text-xs mt-1 flex items-center" id="email-error">
                         <AlertCircle className="h-3 w-3 mr-1" />
-                        {errors.email}
+                        {getFieldError('email')}
                       </p>
                     )}
                   </div>
@@ -315,15 +237,16 @@ export default function Contact() {
                   <Input
                     id="subject"
                     name="subject"
+                    placeholder={language === "es" ? "¿En qué puedo ayudarte?" : "How can I help you?"}
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder={language === "es" ? "¿En qué puedo ayudarte?" : "How can I help you?"}
-                    className={errors.subject ? "border-red-500" : ""}
+                    className={getFieldError('subject') ? "border-red-500" : ""}
+                    aria-describedby="subject-error"
                   />
-                  {errors.subject && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center">
+                  {getFieldError('subject') && (
+                    <p className="text-red-500 text-xs mt-1 flex items-center" id="subject-error">
                       <AlertCircle className="h-3 w-3 mr-1" />
-                      {errors.subject}
+                      {getFieldError('subject')}
                     </p>
                   )}
                 </div>
@@ -335,33 +258,28 @@ export default function Contact() {
                   <Textarea
                     id="message"
                     name="message"
+                    placeholder={language === "es" ? "Cuéntame sobre tu proyecto..." : "Tell me about your project..."}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder={language === "es" ? "Cuéntame sobre tu proyecto..." : "Tell me about your project..."}
-                    rows={5}
-                    className={errors.message ? "border-red-500" : ""}
+                    className={getFieldError('message') ? "border-red-500" : ""}
+                    aria-describedby="message-error"
                   />
-                  {errors.message && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center">
+                  {getFieldError('message') && (
+                    <p className="text-red-500 text-xs mt-1 flex items-center" id="message-error">
                       <AlertCircle className="h-3 w-3 mr-1" />
-                      {errors.message}
+                      {getFieldError('message')}
                     </p>
                   )}
                 </div>
 
-                {/* Hidden FormSubmit.co fields */}
-                <input type="hidden" name="_next" value={window.location.href} />
-                <input type="hidden" name="_captcha" value="true" />
-                <input type="hidden" name="_subject" value={`Nuevo mensaje de ${formData.name}: ${formData.subject}`} />
-
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"
+                  disabled={pending}
+                  className="w-full py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 disabled:opacity-50"
                 >
-                  {isSubmitting ? (
+                  {pending ? (
                     <div className="flex items-center">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
+                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
                       {language === "es" ? "Enviando..." : "Sending..."}
                     </div>
                   ) : (
