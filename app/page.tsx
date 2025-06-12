@@ -16,8 +16,7 @@ import ScrollProgress from "@/components/ui/scroll-progress"
 import LoadingScreen from "@/components/ui/loading-screen"
 import FloatingElements from "@/components/ui/floating-elements"
 import CursorFollower from "@/components/ui/cursor-follower"
-import { LanguageProvider } from "@/context/language-context"
-import { ThemeProvider } from "@/components/theme-provider"
+
 import { Toaster } from "@/components/ui/toaster"
 
 // Enhanced loading placeholder with skeleton
@@ -52,13 +51,11 @@ export default function Home() {
   }
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <LanguageProvider>
-        <div ref={containerRef} className="relative flex flex-col min-h-full">
-          <AnimatePresence mode="wait">
-            {isLoading ? (
-              <LoadingScreen key="loading" />
-            ) : (
+    <div ref={containerRef} className="relative flex flex-col min-h-full">
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <LoadingScreen key="loading" />
+        ) : (
               <motion.main
                 key="main"
                 initial={{ opacity: 0 }}
@@ -113,11 +110,9 @@ export default function Home() {
 
                 {/* Toast Notifications */}
                 <Toaster />
-              </motion.main>
-            )}
-          </AnimatePresence>
-        </div>
-      </LanguageProvider>
-    </ThemeProvider>
+          </motion.main>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }

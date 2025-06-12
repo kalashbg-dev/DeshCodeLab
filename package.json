@@ -3,7 +3,8 @@
   "version": "1.9.6",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
+    "dev:no-turbo": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -49,6 +50,7 @@
     "lucide-react": "^0.454.0",
     "next": "15.2.4",
     "next-themes": "latest",
+    "prettier": "^3.5.3",
     "react": "^19",
     "react-day-picker": "latest",
     "react-dom": "^19",

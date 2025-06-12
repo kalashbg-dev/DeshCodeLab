@@ -17,9 +17,14 @@ export function ThemeToggle({ className = '' }: ThemeToggleProps) {
     setMounted(true)
   }, [])
 
+  // Evitar renderizar el botón hasta que el componente esté montado en el cliente
   if (!mounted) {
     return (
-      <button className="bg-background/80 backdrop-blur-sm p-2 rounded-full shadow-lg" aria-label="Toggle theme">
+      <button 
+        className="inline-flex items-center justify-center p-1 opacity-50 cursor-default" 
+        aria-hidden="true" 
+        tabIndex={-1}
+      >
         <div className="w-5 h-5" />
       </button>
     )
