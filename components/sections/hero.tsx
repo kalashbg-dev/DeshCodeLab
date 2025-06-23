@@ -168,14 +168,22 @@ export default function Hero() {
               </div>
 
               {/* Floating Elements */}
-              <a href={process.env.NEXT_PUBLIC_CV} target="_blank" rel="noopener noreferrer"><motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-                className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg"
-                whileHover={{ scale: 1.1 }}
-              >
-                <Download className="h-6 w-6" />
-              </motion.div></a>
+                <a 
+                  href={language === "es" ? "/assets/ES_CV_Kalashnikov_Bello_FS.pdf" : "/assets/EN_CV_Kalashnikov_Bello_FS.pdf"} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <motion.div
+                    animate={{ y: [-10, 10, -10] }}
+                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                    className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg
+                    hover:bg-accent hover:scale-110 transition-all duration-300
+                    active:bg-secondary active:scale-110 md:active:transform-none"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <span className="font-bold">CV</span>
+                  </motion.div>
+                </a>
             </motion.div>
           </div>
         </div>
