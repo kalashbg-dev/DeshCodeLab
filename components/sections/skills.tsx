@@ -66,7 +66,7 @@ export default function Skills() {
 
   return (
     <section
-      ref={ref}
+      ref={ref} id="skills"
       className="py-20 bg-gradient-to-br from-background via-muted/50 to-background relative overflow-hidden"
     >
       {/* Background Elements */}
