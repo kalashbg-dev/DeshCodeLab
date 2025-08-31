@@ -5,6 +5,7 @@ import { Quote, Star } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 import GlassCard from "@/components/ui/glass-card"
+import Image from "next/image"
 
 const testimonials = [
   {
@@ -97,13 +98,15 @@ export default function Testimonials() {
                   </div>
 
                   <p className="text-muted-foreground mb-6 leading-relaxed relative z-10">
-                    "{language === "es" ? testimonial.content.es : testimonial.content.en}"
+                    &ldquo;{language === "es" ? testimonial.content.es : testimonial.content.en}&rdquo;
                   </p>
 
                   <div className="flex items-center">
-                    <img
+                    <Image
                       src={testimonial.image || "/placeholder.svg"}
                       alt={testimonial.name}
+                      width={48}
+                      height={48}
                       className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-primary/20"
                     />
                     <div>

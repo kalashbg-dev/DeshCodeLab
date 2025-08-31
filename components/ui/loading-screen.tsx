@@ -28,7 +28,7 @@ export default function LoadingScreen() {
     return () => clearInterval(timer)
   }, [theme]) // Re-evaluamos cuando el tema cambie
 
-  const { language, t } = useLanguage()
+  const { language } = useLanguage()
 
   const logoSrc = currentTheme === "dark" ? "/logoKB-W.png" : "/logoKB-BLK.png"
 

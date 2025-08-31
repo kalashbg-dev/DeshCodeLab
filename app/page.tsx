@@ -49,7 +49,7 @@ const ErrorFallback = ({ error }: { error: Error }) => (
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error] = useState<Error | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

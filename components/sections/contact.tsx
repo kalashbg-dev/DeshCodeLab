@@ -40,7 +40,7 @@ export default function Contact() {
     
     try {
       // Use the stored form data
-      const result = await submitContactForm(state, formData)
+      await submitContactForm(state, formData)
       setState({ success: true, message: language === 'es' ? '¡Mensaje enviado!' : 'Message sent!', errors: [] })
       // Reset the form using the stored reference
       form.reset()

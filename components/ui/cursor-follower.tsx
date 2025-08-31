@@ -14,7 +14,7 @@ const isTouchDevice = () => {
   const hasTouchSupport = (
     'ontouchstart' in window ||
     (window.navigator.maxTouchPoints > 0) ||
-    (window.navigator as any).msMaxTouchPoints > 0
+    ((window.navigator as Navigator & { msMaxTouchPoints?: number }).msMaxTouchPoints ?? 0) > 0
   );
 
   // Considerar como dispositivo táctil si es una vista móvil o si tiene soporte táctil

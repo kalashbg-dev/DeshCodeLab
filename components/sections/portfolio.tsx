@@ -6,6 +6,7 @@ import { useLanguage } from "@/context/language-context";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import GlassCard from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const projects = [
   {
@@ -209,7 +210,7 @@ export default function Portfolio() {
             >
               <GlassCard className="overflow-hidden group hover:scale-105 transition-all duration-300">
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={
                       typeof project.image === "string"
                         ? project.image
@@ -218,6 +219,8 @@ export default function Portfolio() {
                           ] || "/placeholder.svg"
                     }
                     alt={project.title}
+                    width={400}
+                    height={192}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

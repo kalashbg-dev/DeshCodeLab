@@ -56,7 +56,6 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     })
 
     if (error) {
-      console.error('Error sending email:', error)
       return { 
         success: false, 
         message: 'Failed to send message. Please try again.' 
@@ -79,7 +78,6 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       }
     }
     
-    console.error('Unexpected error:', error)
     return { 
       success: false, 
       message: 'An unexpected error occurred. Please try again later.' 
