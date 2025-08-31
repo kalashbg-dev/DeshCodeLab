@@ -1,55 +1,246 @@
-# 🚀DeshCode By KalashDEV
+# 🚀 DeshCode Lab - Portfolio Profesional
 
-![deshcode_ss.webp](public/deshcode_ss.webp)
+Portfolio moderno y optimizado de **Kalashnikov Bello**, especialista en análisis de datos, desarrollo FullStack y soluciones de Business Intelligence.
 
-A modern and responsive web portfolio built with Next.js, featuring my skills as a full-stack developer and data analyst.
+## ✨ Características
 
-## ✨ Features
+- 🎨 **Diseño Moderno**: UI/UX elegante y responsive
+- 🌙 **Tema Oscuro/Claro**: Soporte completo para ambos temas
+- 🌍 **Multilingüe**: Español e Inglés
+- 📱 **Mobile First**: Optimizado para todos los dispositivos
+- ⚡ **Performance**: Lazy loading, code splitting y optimizaciones
+- ♿ **Accesibilidad**: ARIA labels, navegación por teclado
+- 🔍 **SEO Optimizado**: Metadatos, structured data, sitemap
+- 📱 **PWA Ready**: Manifest, service worker, instalable
+- 🎭 **Animaciones**: Framer Motion con optimizaciones
+- 🎯 **TypeScript**: Código tipado y robusto
 
-- 🌐 **Bilingual** - Full support for English and Spanish.
-- 📱 **Responsive** - Responsive design for all devices
-- 🎨 **Modern** - Elegant interface with smooth animations
-- ⚡ **Fast** - Optimized for performance
-- 🌙 **Dark/Clear Theme** - Automatic switching according to system preferences
+## 🛠️ Tecnologías
 
-## 🛠️ Technologies Used
+### Frontend
+- **Next.js 15** - Framework React con App Router
+- **React 19** - Biblioteca de UI
+- **TypeScript** - Tipado estático
+- **Tailwind CSS** - Framework CSS utility-first
+- **Framer Motion** - Animaciones fluidas
+- **Radix UI** - Componentes accesibles
 
-- **Framework:** Next.js
-- Styling:** Tailwind CSS
-- Animations:** Framer Motion
-- Icons:** Lucide React
-- Components:** shadcn/ui
-- Language:** TypeScript
+### Herramientas
+- **ESLint** - Linting de código
+- **Prettier** - Formateo automático
+- **Husky** - Git hooks
+- **Jest** - Testing framework
 
-## 🚀 Installation and Use
+## 🚀 Instalación
 
-1. **Clone the repository**
+### Prerrequisitos
+- Node.js 18+ 
+- pnpm (recomendado) o npm
 
-````bash
-git clone https://github.com/tu-usuario/portfolio-kalashnikov.git
-cd portfolio-kalashnikov
-````
+### Pasos
+```bash
+# Clonar repositorio
+git clone https://github.com/kalashdev/deshcodelab.git
+cd deshcodelab
 
-2. **Install dependencies**
+# Instalar dependencias
+pnpm install
 
-````bash
-  pnpm install
-````
+# Configurar variables de entorno
+cp .env.example .env.local
 
-3 **Run the development server**
+# Ejecutar en desarrollo
+pnpm dev
 
-````bash
-pnpm run dev
-````
+# Construir para producción
+pnpm build
 
-4. **Open your browser**
+# Ejecutar en producción
+pnpm start
+```
 
-Visit [http://localhost:3000](http://localhost:3000)
+## 📁 Estructura del Proyecto
 
-## 📄 License
+```
+DeshCodeLab/
+├── app/                    # App Router de Next.js
+│   ├── layout.tsx         # Layout principal
+│   ├── page.tsx           # Página principal
+│   └── globals.css        # Estilos globales
+├── components/            # Componentes reutilizables
+│   ├── ui/               # Componentes base (Radix UI)
+│   ├── sections/         # Secciones de la página
+│   └── navigation/       # Componentes de navegación
+├── hooks/                # Hooks personalizados
+├── context/              # Contextos de React
+├── lib/                  # Utilidades y configuraciones
+├── public/               # Archivos estáticos
+└── styles/               # Estilos y CSS
+```
 
-This project is under License. See the [LICENSE](LICENSE) file for more details.
+## 🔧 Scripts Disponibles
+
+```bash
+# Desarrollo
+pnpm dev              # Servidor de desarrollo
+pnpm dev:no-turbo     # Sin Turbopack
+
+# Construcción
+pnpm build            # Construir para producción
+pnpm start            # Servidor de producción
+
+# Calidad de código
+pnpm lint             # Ejecutar ESLint
+pnpm lint:fix         # Corregir errores automáticamente
+pnpm type-check       # Verificar tipos TypeScript
+
+# Análisis
+pnpm analyze          # Analizar bundle
+pnpm format           # Formatear código
+pnpm format:check     # Verificar formato
+
+# Testing
+pnpm test             # Ejecutar tests
+pnpm test:watch       # Tests en modo watch
+
+# Utilidades
+pnpm clean            # Limpiar archivos generados
+```
+
+## 🌍 Variables de Entorno
+
+Crear archivo `.env.local`:
+
+```env
+# URLs de redes sociales
+NEXT_PUBLIC_GITHUB=https://github.com/kalashdev
+NEXT_PUBLIC_LINKEDIN=https://linkedin.com/in/kalashnikov-bello
+NEXT_PUBLIC_EMAIL=contact@deshcodelab.com
+
+# Configuración de Resend (email)
+RESEND_API_KEY=your_resend_api_key
+
+# URLs de verificación SEO
+NEXT_PUBLIC_SITE_URL=https://deshcodelab.com
+```
+
+## 📱 PWA y SEO
+
+### PWA Features
+- Manifest.json configurado
+- Service worker para cache offline
+- Instalable en dispositivos móviles
+- Splash screen personalizado
+
+### SEO Optimizado
+- Metadatos dinámicos
+- Open Graph tags
+- Twitter Cards
+- Structured Data (JSON-LD)
+- Sitemap automático
+- Robots.txt configurado
+
+## 🎨 Personalización
+
+### Colores
+Los colores se pueden personalizar en `tailwind.config.ts`:
+
+```typescript
+colors: {
+  primary: {
+    DEFAULT: 'hsl(var(--primary))',
+    // ... más variantes
+  }
+}
+```
+
+### Fuentes
+Fuentes personalizables en `app/layout.tsx`:
+
+```typescript
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  // ... más opciones
+});
+```
+
+## 📊 Performance
+
+### Métricas Objetivo
+- **LCP**: < 2.5s
+- **FID**: < 100ms
+- **CLS**: < 0.1
+- **FCP**: < 1.8s
+
+### Optimizaciones Implementadas
+- Lazy loading de componentes
+- Code splitting automático
+- Optimización de imágenes
+- Preload de recursos críticos
+- Bundle analysis
+- Tree shaking
+
+## 🧪 Testing
+
+```bash
+# Ejecutar tests
+pnpm test
+
+# Tests en modo watch
+pnpm test:watch
+
+# Coverage
+pnpm test:coverage
+```
+
+## 📦 Deployment
+
+### Vercel (Recomendado)
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+### Netlify
+```bash
+# Build
+pnpm build
+
+# Deploy manual o con CI/CD
+```
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crear rama feature (`git checkout -b feature/AmazingFeature`)
+3. Commit cambios (`git commit -m 'Add AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abrir Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
+
+## 👨‍💻 Autor
+
+**Kalashnikov Bello**
+- 🐙 [GitHub](https://github.com/kalashdev)
+- 💼 [LinkedIn](https://linkedin.com/in/kalashnikov-bello)
+- 📧 [Email](mailto:contact@deshcodelab.com)
+- 🌐 [Portfolio](https://deshcodelab.com)
+
+## 🙏 Agradecimientos
+
+- [Next.js](https://nextjs.org/) - Framework increíble
+- [Tailwind CSS](https://tailwindcss.com/) - CSS utility-first
+- [Radix UI](https://www.radix-ui.com/) - Componentes accesibles
+- [Framer Motion](https://www.framer.com/motion/) - Animaciones fluidas
+- [Vercel](https://vercel.com/) - Hosting y deployment
 
 ---
 
-⭐ If you like this project, give it a star on GitHub!
+⭐ **¡Si te gusta este proyecto, dale una estrella!** ⭐

@@ -1,53 +1,75 @@
-"use client"
+'use client';
 
-import { useEffect, useState, Suspense } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { useRef } from "react"
-import Hero from "@/components/sections/hero"
-import About from "@/components/sections/about"
-import Skills from "@/components/sections/skills"
-import Portfolio from "@/components/sections/portfolio"
-import Services from "@/components/sections/services"
-import Testimonials from "@/components/sections/testimonials"
-import Contact from "@/components/sections/contact"
-import Footer from "@/components/sections/footer"
-import Navbar from "@/components/navigation/navbar"
-import ScrollProgress from "@/components/ui/scroll-progress"
-import LoadingScreen from "@/components/ui/loading-screen"
-import FloatingElements from "@/components/ui/floating-elements"
-import CursorFollower from "@/components/ui/cursor-follower"
+import { useEffect, useState, Suspense, lazy } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useRef } from 'react';
+import LoadingScreen from '@/components/ui/loading-screen';
 
-import { Toaster } from "@/components/ui/toaster"
+// Lazy loading de componentes para mejor performance
+const Hero = lazy(() => import('@/components/sections/hero'));
+const About = lazy(() => import('@/components/sections/about'));
+const Skills = lazy(() => import('@/components/sections/skills'));
+const Portfolio = lazy(() => import('@/components/sections/portfolio'));
+const Services = lazy(() => import('@/components/sections/services'));
+const Testimonials = lazy(() => import('@/components/sections/testimonials'));
+const Contact = lazy(() => import('@/components/sections/contact'));
+const Footer = lazy(() => import('@/components/sections/footer'));
+const Navbar = lazy(() => import('@/components/navigation/navbar'));
+const ScrollProgress = lazy(() => import('@/components/ui/scroll-progress'));
+const FloatingElements = lazy(() => import('@/components/ui/floating-elements'));
+const CursorFollower = lazy(() => import('@/components/ui/cursor-follower'));
 
-// Enhanced loading placeholder with skeleton
+// Componente de skeleton optimizado
 const SectionSkeleton = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="space-y-4 w-full max-w-4xl mx-auto px-4">
-      <div className="h-8 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded animate-pulse"></div>
-      <div className="h-4 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded animate-pulse w-3/4"></div>
-      <div className="h-4 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded animate-pulse w-1/2"></div>
+  <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="space-y-4 w-full max-w-4xl mx-auto">
+      <div className="h-8 bg-gradient-to-r from-muted via-muted/50 to-muted rounded animate-pulse" />
+      <div className="h-4 bg-gradient-to-r from-muted via-muted/50 to-muted rounded animate-pulse w-3/4" />
+      <div className="h-4 bg-gradient-to-r from-muted via-muted/50 to-muted rounded animate-pulse w-1/2" />
     </div>
   </div>
-)
+);
+
+// Componente de error boundary
+const ErrorFallback = ({ error }: { error: Error }) => (
+  <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="text-center space-y-4">
+      <h2 className="text-2xl font-bold text-destructive">Algo salió mal</h2>
+      <p className="text-muted-foreground">{error.message}</p>
+      <button
+        onClick={() => window.location.reload()}
+        className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+      >
+        Recargar página
+      </button>
+    </div>
+  </div>
+);
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [mounted, setMounted] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [isLoading, setIsLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
 
-    // Simulate loading time for better UX
+    // Simular tiempo de carga para mejor UX
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
+      setIsLoading(false);
+    }, 1500); // Reducido de 2s a 1.5s
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Error boundary
+  if (error) {
+    return <ErrorFallback error={error} />;
+  }
 
   if (!mounted) {
-    return <SectionSkeleton />
+    return <SectionSkeleton />;
   }
 
   return (
@@ -56,63 +78,68 @@ export default function Home() {
         {isLoading ? (
           <LoadingScreen key="loading" />
         ) : (
-              <motion.main
-                key="main"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="relative flex-1 flex flex-col w-full overflow-x-hidden"
-              >
-                {/* Enhanced Navigation */}
-                <Navbar />
+          <motion.main
+            key="main"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="relative flex-1 flex flex-col w-full overflow-x-hidden"
+          >
+            {/* Navegación */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <Navbar />
+            </Suspense>
 
-                {/* Scroll Progress */}
-                <ScrollProgress />
+            {/* Barra de progreso */}
+            <Suspense fallback={null}>
+              <ScrollProgress />
+            </Suspense>
 
-                {/* Floating Background Elements */}
-                <FloatingElements />
+            {/* Elementos flotantes de fondo */}
+            <Suspense fallback={null}>
+              <FloatingElements />
+            </Suspense>
 
-                {/* Custom Cursor */}
-                <CursorFollower />
+            {/* Cursor personalizado solo en desktop */}
+            <Suspense fallback={null}>
+              <CursorFollower />
+            </Suspense>
 
-                {/* Page Sections */}
-                <Suspense fallback={<SectionSkeleton />}>
-                  <Hero />
-                </Suspense>
+            {/* Secciones de la página con lazy loading */}
+            <Suspense fallback={<SectionSkeleton />}>
+              <Hero />
+            </Suspense>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <About />
-                </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <About />
+            </Suspense>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <Skills />
-                </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <Skills />
+            </Suspense>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <Portfolio />
-                </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <Portfolio />
+            </Suspense>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <Services />
-                </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <Services />
+            </Suspense>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <Testimonials />
-                </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <Testimonials />
+            </Suspense>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <Contact />
-                </Suspense>
+            <Suspense fallback={<SectionSkeleton />}>
+              <Contact />
+            </Suspense>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <Footer />
-                </Suspense>
-
-                {/* Toast Notifications */}
-                <Toaster />
+            <Suspense fallback={<SectionSkeleton />}>
+              <Footer />
+            </Suspense>
           </motion.main>
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

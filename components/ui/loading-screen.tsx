@@ -28,7 +28,7 @@ export default function LoadingScreen() {
     return () => clearInterval(timer)
   }, [theme]) // Re-evaluamos cuando el tema cambie
 
-  const { language, dictionary } = useLanguage()
+  const { language, t } = useLanguage()
 
   const logoSrc = currentTheme === "dark" ? "/logoKB-W.png" : "/logoKB-BLK.png"
 
@@ -101,7 +101,7 @@ export default function LoadingScreen() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-medium text-muted-foreground">
-                    {dictionary?.loadingText || (language === "es" ? "Cargando" : "Loading")}
+                    {language === "es" ? "Cargando" : "Loading"}
                   </span>
                   <span className="text-sm font-medium bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                     {progress}%
@@ -122,7 +122,7 @@ export default function LoadingScreen() {
                   •
                 </motion.span>
                 <span>
-                  {dictionary?.loadingPreparingText || (language === "es" ? "Preparando tu experiencia" : "Preparing your experience")}
+                  {language === "es" ? "Preparando tu experiencia" : "Preparing your experience"}
                 </span>
                 <motion.span
                   className="inline-block w-2 h-2 bg-primary rounded-full"
