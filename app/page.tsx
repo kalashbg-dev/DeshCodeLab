@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect, useState, Suspense, lazy } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, Suspense, lazy } from 'react';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import LoadingScreen from '@/components/ui/loading-screen';
 
-// Lazy loading de componentes para mejor performance
-const Hero = lazy(() => import('@/components/sections/hero'));
+// Importación directa de componentes críticos para evitar parpadeos y carga diferida inicial
+import Hero from '@/components/sections/hero';
+import Navbar from '@/components/navigation/navbar';
+
+// Lazy loading solo para secciones que no están en el viewport inicial
 const About = lazy(() => import('@/components/sections/about'));
 const Skills = lazy(() => import('@/components/sections/skills'));
 const Portfolio = lazy(() => import('@/components/sections/portfolio'));
@@ -14,12 +16,8 @@ const Services = lazy(() => import('@/components/sections/services'));
 const Testimonials = lazy(() => import('@/components/sections/testimonials'));
 const Contact = lazy(() => import('@/components/sections/contact'));
 const Footer = lazy(() => import('@/components/sections/footer'));
-const Navbar = lazy(() => import('@/components/navigation/navbar'));
-const ScrollProgress = lazy(() => import('@/components/ui/scroll-progress'));
-const FloatingElements = lazy(() => import('@/components/ui/floating-elements'));
-const CursorFollower = lazy(() => import('@/components/ui/cursor-follower'));
 
-// Componente de skeleton optimizado
+// Componente de skeleton optimizado para secciones lazy
 const SectionSkeleton = () => (
   <div className="min-h-screen flex items-center justify-center p-4">
     <div className="space-y-4 w-full max-w-4xl mx-auto">
@@ -47,99 +45,57 @@ const ErrorFallback = ({ error }: { error: Error }) => (
 );
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const [error] = useState<Error | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-
-    // Simular tiempo de carga para mejor UX
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500); // Reducido de 2s a 1.5s
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Error boundary
   if (error) {
     return <ErrorFallback error={error} />;
   }
 
-  if (!mounted) {
-    return <SectionSkeleton />;
-  }
-
   return (
     <div ref={containerRef} className="relative flex flex-col min-h-full">
-      <AnimatePresence mode="wait">
-        {isLoading ? (
-          <LoadingScreen key="loading" />
-        ) : (
-          <motion.main
-            key="main"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative flex-1 flex flex-col w-full overflow-x-hidden"
-          >
-            {/* Navegación */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <Navbar />
-            </Suspense>
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="relative flex-1 flex flex-col w-full overflow-x-hidden"
+      >
+        {/* Navegación - Carga inmediata */}
+        <Navbar />
 
-            {/* Barra de progreso */}
-            <Suspense fallback={null}>
-              <ScrollProgress />
-            </Suspense>
+        {/* Hero - Carga inmediata */}
+        <Hero />
 
-            {/* Elementos flotantes de fondo */}
-            <Suspense fallback={null}>
-              <FloatingElements />
-            </Suspense>
+        {/* Secciones de la página con lazy loading */}
+        <Suspense fallback={<SectionSkeleton />}>
+          <About />
+        </Suspense>
 
-            {/* Cursor personalizado solo en desktop */}
-            <Suspense fallback={null}>
-              <CursorFollower />
-            </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Skills />
+        </Suspense>
 
-            {/* Secciones de la página con lazy loading */}
-            <Suspense fallback={<SectionSkeleton />}>
-              <Hero />
-            </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Portfolio />
+        </Suspense>
 
-            <Suspense fallback={<SectionSkeleton />}>
-              <About />
-            </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Services />
+        </Suspense>
 
-            <Suspense fallback={<SectionSkeleton />}>
-              <Skills />
-            </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Testimonials />
+        </Suspense>
 
-            <Suspense fallback={<SectionSkeleton />}>
-              <Portfolio />
-            </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Contact />
+        </Suspense>
 
-            <Suspense fallback={<SectionSkeleton />}>
-              <Services />
-            </Suspense>
-
-            <Suspense fallback={<SectionSkeleton />}>
-              <Testimonials />
-            </Suspense>
-
-            <Suspense fallback={<SectionSkeleton />}>
-              <Contact />
-            </Suspense>
-
-            <Suspense fallback={<SectionSkeleton />}>
-              <Footer />
-            </Suspense>
-          </motion.main>
-        )}
-      </AnimatePresence>
+        <Suspense fallback={<SectionSkeleton />}>
+          <Footer />
+        </Suspense>
+      </motion.main>
     </div>
   );
 }
