@@ -27,16 +27,18 @@ export default function ParticleField() {
     }
 
     const createParticles = () => {
-      const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000))
+      // Reducido significativamente el número de partículas: divisor cambiado de 15000 a 45000
+      // Máximo reducido de 50 a 20
+      const particleCount = Math.min(20, Math.floor((canvas.width * canvas.height) / 45000))
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.2,
+          vx: (Math.random() - 0.5) * 0.2, // Velocidad reducida
+          vy: (Math.random() - 0.5) * 0.2, // Velocidad reducida
+          size: Math.random() * 1.5 + 0.5, // Tamaño reducido ligeramente
+          opacity: Math.random() * 0.3 + 0.1, // Opacidad reducida
         })
       }
     }
@@ -44,7 +46,7 @@ export default function ParticleField() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      particles.forEach((particle, index) => {
+      particles.forEach((particle) => {
         particle.x += particle.vx
         particle.y += particle.vy
 
@@ -56,20 +58,7 @@ export default function ParticleField() {
         ctx.fillStyle = `rgba(99, 102, 241, ${particle.opacity})`
         ctx.fill()
 
-        // Connect nearby particles
-        particles.slice(index + 1).forEach((otherParticle) => {
-          const dx = particle.x - otherParticle.x
-          const dy = particle.y - otherParticle.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < 100) {
-            ctx.beginPath()
-            ctx.moveTo(particle.x, particle.y)
-            ctx.lineTo(otherParticle.x, otherParticle.y)
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - distance / 100)})`
-            ctx.stroke()
-          }
-        })
+        // Eliminada la conexión entre partículas para simplificar
       })
 
       requestAnimationFrame(animate)
@@ -86,5 +75,5 @@ export default function ParticleField() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none opacity-30" style={{ zIndex: 1 }} />
+  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none opacity-20" style={{ zIndex: 1 }} />
 }

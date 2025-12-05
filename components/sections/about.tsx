@@ -56,8 +56,8 @@ export default function About() {
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 {language === "es"
-                  ? "12 años de experiencia en ventas y producción agrícola, además de 5 años liderando negocios y proyectos. Ahora aprovecho el análisis de datos y el desarrollo web para ofrecer decisiones claras y basadas en datos que generan un impacto real para empresas e individuos."
-                  : "12 years in agricultural sales and production, plus 5 years leading businesses and projects. I now leverage data analysis and web development to deliver clear, data-driven decisions that make a real impact for companies and individuals."}
+                  ? "Con una sólida base en liderazgo empresarial, ahora me enfoco exclusivamente en el análisis de datos y el desarrollo web full-stack. Construyo soluciones eficientes y escalables que transforman datos brutos en insights claros y accionables, generando valor real para las empresas."
+                  : "With a strong foundation in business leadership, I now focus exclusively on data analysis and full-stack web development. I build efficient, scalable solutions that transform raw data into clear, actionable insights, driving real value for businesses."}
               </p>
             </GlassCard>
 

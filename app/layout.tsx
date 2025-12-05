@@ -1,25 +1,23 @@
 import type React from 'react';
 import type { Metadata, Viewport } from 'next';
-import { Inter, Poppins, JetBrains_Mono } from 'next/font/google';
+import { Outfit, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import '@/styles/globals.css';
 import { LanguageProvider } from '@/context/language-context';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
-import ScrollProgress from '@/components/ui/scroll-progress';
 import WhatsAppButton from '@/components/whatsapp-button';
 
 // Configuración de fuentes optimizada
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-outfit',
   display: 'swap',
   preload: true,
 });
 
-const poppins = Poppins({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-poppins',
-  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-jakarta',
   display: 'swap',
   preload: true,
 });
@@ -140,7 +138,7 @@ export default function RootLayout({
     <html
       lang="es"
       suppressHydrationWarning
-      className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`${jakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <head>
         {/* Preload de recursos críticos */}
@@ -175,7 +173,7 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body
-        className={`${inter.className} min-h-screen flex flex-col antialiased bg-background text-foreground`}
+        className={`${jakarta.className} min-h-screen flex flex-col antialiased bg-background text-foreground`}
       >
         <ThemeProvider
           attribute="class"
@@ -184,7 +182,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
-            <ScrollProgress />
             <main className="flex-1 flex flex-col" role="main">
               {children}
             </main>
