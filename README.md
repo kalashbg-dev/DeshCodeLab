@@ -106,24 +106,6 @@ pnpm test:watch       # Tests en modo watch
 # Utilidades
 pnpm clean            # Limpiar archivos generados
 ```
-
-## 🌍 Variables de Entorno
-
-Crear archivo `.env.local`:
-
-```env
-# URLs de redes sociales
-NEXT_PUBLIC_GITHUB=https://github.com/kalashdev
-NEXT_PUBLIC_LINKEDIN=https://linkedin.com/in/kalashnikov-bello
-NEXT_PUBLIC_EMAIL=contact@deshcodelab.com
-
-# Configuración de Resend (email)
-RESEND_API_KEY=your_resend_api_key
-
-# URLs de verificación SEO
-NEXT_PUBLIC_SITE_URL=https://deshcodelab.com
-```
-
 ## 📱 PWA y SEO
 
 ### PWA Features
