@@ -181,7 +181,6 @@ export default function Hero() {
                     sizes="(max-width: 768px) 288px, 320px"
                   />
                   <div className="absolute inset-0 border-4 border-transparent bg-clip-padding p-[1px] pointer-events-none" />
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary via-secondary to-accent opacity-20" />
                 </div>
               </div>
 

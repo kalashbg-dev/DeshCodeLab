@@ -5,7 +5,6 @@ import '@/styles/globals.css';
 import { LanguageProvider } from '@/context/language-context';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
-import ScrollProgress from '@/components/ui/scroll-progress';
 import WhatsAppButton from '@/components/whatsapp-button';
 
 // Configuración de fuentes optimizada
@@ -184,7 +183,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
-            <ScrollProgress />
             <main className="flex-1 flex flex-col" role="main">
               {children}
             </main>
