@@ -26,66 +26,81 @@ body {
 }
 
 :root {
+  /*
+   * Light Mode Palette:
+   * Background: #F8FAFC (Slate 50) - Warm/Tech White
+   * Foreground: #0F172A (Slate 900)
+   * Primary: #4F46E5 (Indigo 600) - Electric Indigo
+   * Secondary: #0EA5E9 (Sky 500) - Vivid Azure
+   * Accent: #F59E0B (Amber 500) - Warm/Empathic
+   */
+  --background: 210 40% 98%;      /* Slate 50 */
+  --foreground: 222 47% 11%;      /* Slate 900 */
 
-  --primary: 215 83.2% 50.8%;    /* #3366cc - Azul principal: ligeramente más fresco, manteniendo el impacto. */
-  --primary-foreground: 210 40% 98%; /* #f8fafc - Texto claro para primary. */
+  --primary: 243 75% 59%;         /* Indigo 600 */
+  --primary-foreground: 210 40% 98%;
 
-  --secondary: 210 20% 97%;        /* #f2f5f8 - Gris azulado muy suave, casi blanco, para superficies secundarias. */
-  --secondary-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para secondary. */
+  --secondary: 199 89% 48%;       /* Sky 500 */
+  --secondary-foreground: 210 40% 98%;
 
-  --accent: 260 70% 65%;          /* #9a5bff - Violeta vibrante: un poco más claro para un acento moderno. */
-  --accent-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para accent. */
+  --accent: 37 92% 50%;           /* Amber 500 */
+  --accent-foreground: 222 47% 11%;
 
-  --background: 0 0% 100%;        /* #ffffff - Fondo principal blanco puro. */
-  --foreground: 222.2 84% 4.9%;   /* #0c1220 - Texto principal oscuro (azul-gris rico, casi negro). */
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
 
-  --card: 0 0% 100%;              /* #ffffff - Las tarjetas son blancas, se elevan con sombra y borde sutil. */
-  --card-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para card. */
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
 
-  --popover: 0 0% 100%;           /* #ffffff - Popovers blancos, igual que cards. */
-  --popover-foreground: 222.2 84% 4.9%; /* #0c1220 - Texto oscuro para popover. */
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
 
-  --muted: 210 20% 97%;           /* #f2f5f8 - Fondos y elementos muted, igual que secondary para coherencia. */
-  --muted-foreground: 215.4 16.3% 40.9%; /* #607080 - Gris medio: un poco más oscuro para mejor legibilidad. */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
 
-  --destructive: 0 84.2% 55.2%;   /* #d62f48 - Rojo fuerte: ligeramente más profundo para impacto. */
-  --destructive-foreground: 210 40% 98%; /* #f8fafc - Texto claro para destructive. */
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 243 75% 59%;
 
-  --border: 214.3 20% 90%;        /* #e0e6ed - Borde gris claro: más suave y sutil. */
-  --input: 214.3 20% 90%;         /* #e0e6ed - Inputs con el mismo borde para consistencia. */
-  --ring: 215 83.2% 50.8%;        /* #3366cc - Anillo de enfoque primario para accesibilidad. */
   --radius: 0.5rem;
 }
 
 .dark {
+  /*
+   * Dark Mode Palette:
+   * Background: #0B1120 (Rich Dark Slate)
+   * Foreground: #E2E8F0 (Slate 200)
+   * Primary: #6366F1 (Indigo 500)
+   * Secondary: #38BDF8 (Sky 400)
+   * Accent: #FBBF24 (Amber 400)
+   */
+  --background: 224 47% 8%;       /* Slate 950 approx */
+  --foreground: 214 32% 91%;      /* Slate 200 */
 
-  --background: 225 20% 8%;       /* #10141a - Fondo principal: Negro azulado profundo y muy oscuro. */
-  --foreground: 210 40% 98%;      /* #f8fafc - Texto principal: Blanco suave. */
+  --primary: 243 85% 66%;         /* Indigo 500 */
+  --primary-foreground: 222 47% 11%;
 
-  --primary: 217.2 91.2% 68%;     /* #78aaff - Azul vibrante y brillante: un poco más luminoso para destacar en oscuro. */
-  --primary-foreground: 225 20% 8%; /* #10141a - Texto oscuro sobre primary (alineado con el nuevo background). */
+  --secondary: 199 94% 60%;       /* Sky 400 */
+  --secondary-foreground: 222 47% 11%;
 
-  --secondary: 220 15% 15%;       /* #242931 - Gris azulado oscuro: superficie para elementos secundarios, más integrado. */
-  --secondary-foreground: 210 40% 90%; /* #e1e7ec - Texto ligeramente más claro sobre secondary. */
+  --accent: 43 96% 56%;           /* Amber 400 */
+  --accent-foreground: 222 47% 11%;
 
-  --accent: 260 70% 78%;          /* #c499ff - Violeta claro y vibrante: un poco más luminoso para acentos. */
-  --accent-foreground: 225 20% 8%; /* #10141a - Texto oscuro sobre accent (alineado con el nuevo background). */
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 75.1%;
 
-  --card: 220 18% 12%;            /* #1b2028 - Fondo de tarjeta: ligeramente más claro que el background para profundidad. */
-  --card-foreground: 210 40% 98%; /* #f8fafc - Texto claro sobre card. */
+  --card: 224 47% 10%;           /* Slightly lighter than background */
+  --card-foreground: 214 32% 91%;
 
-  --popover: 220 18% 12%;         /* #1b2028 - Popover igual que card. */
-  --popover-foreground: 210 40% 98%; /* #f8fafc - Texto claro sobre popover. */
+  --popover: 224 47% 10%;
+  --popover-foreground: 214 32% 91%;
 
-  --muted: 220 15% 15%;           /* #242931 - Fondo muted (igual que secondary). */
-  --muted-foreground: 215 20.2% 70%; /* #9fa8b3 - Gris claro para texto muted: muy legible, un poco más oscuro. */
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
 
-  --destructive: 0 62.8% 45.6%;   /* #d94a64 - Rojo más suave pero visible: un poco más saturado. */
-  --destructive-foreground: 210 40% 98%; /* #f8fafc - Texto claro sobre destructive. */
-
-  --border: 220 15% 22%;          /* #363d47 - Borde oscuro: más sutil y menos contrastante. */
-  --input: 220 15% 22%;           /* #363d47 - Input oscuro: consistente con el borde. */
-  --ring: 224.3 76.3% 86.1%;      /* #c0d1ff - Anillo de enfoque: aún más claro para máxima distinción. */
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 243 85% 66%;
 }
 
 /* Ensure fonts apply correctly in base layer */
@@ -103,7 +118,7 @@ body {
   h4,
   h5,
   h6 {
-    @apply font-poppins;
+    @apply font-heading;
   }
 }
 
@@ -148,8 +163,8 @@ body {
 
   /* Gradient text */
   .gradient-text {
-    /* Mantiene el gradiente de primary a primary para un color sólido, pero con nombre de gradiente */
-    @apply bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent;
+    /* Mantiene el gradiente de primary a secondary para un color dinámico */
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
   }
 
   /* Enhanced crystal button effect */
@@ -159,8 +174,7 @@ body {
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     transform: translateZ(0);
     backdrop-filter: blur(10px);
-    /* Usar border-border para el borde */
-    border: 1px solid hsl(var(--border)); /* Ajustado para usar la variable --border */
+    border: 1px solid hsl(var(--border));
   }
 
   .crystal-btn::before {
@@ -170,7 +184,6 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    /* Gradiente con --foreground para un brillo que contraste */
     background: linear-gradient(90deg, transparent 0%, hsla(var(--foreground), 0.2) 50%, transparent 100%);
     z-index: 1;
     pointer-events: none;
@@ -179,8 +192,7 @@ body {
 
   .crystal-btn:hover {
     transform: scale(1.03) translateY(-2px) translateZ(0);
-    /* Sombra más sutil y general */
-    box-shadow: 0 8px 16px hsla(var(--foreground), 0.15); /* Sombra ajustada */
+    box-shadow: 0 8px 16px hsla(var(--foreground), 0.15);
   }
 
   .crystal-btn:hover::before {
@@ -206,7 +218,7 @@ body {
     position: relative;
     display: inline-block;
     transition: text-shadow 0.3s ease, color 0.3s cubic-bezier(0.1, 0.7, 1.0, 0.1);
-    transform: translateZ(0); /* Hardware acceleration */
+    transform: translateZ(0);
   }
 
   .glitch-name:hover {
@@ -243,14 +255,11 @@ body {
     width: 2.5rem;
     height: 0.75rem;
     border-radius: 0.375rem;
-    /* Usar hsl(var(--primary)) con opacidad para el fondo */
     background-color: hsla(var(--primary), 0.2);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    /* Sombra más sutil */
     box-shadow: 0 1px 3px hsla(var(--foreground), 0.1);
-    /* Borde basado en primary */
     border: 1px solid hsla(var(--primary), 0.1);
   }
 
@@ -261,7 +270,6 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    /* Fondo con opacidad de primary */
     background-color: hsla(var(--primary), 0.1);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
@@ -276,12 +284,11 @@ body {
     background-color: hsl(var(--primary));
     width: 3rem;
     transform: translateY(-2px);
-    /* Sombra más pronunciada del primary */
     box-shadow: 0 2px 6px hsla(var(--primary), 0.4);
   }
 
   .carousel-indicator:focus-visible {
-    outline: 2px solid hsl(var(--ring)); /* Usar --ring para consistencia de focus */
+    outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
   }
 
@@ -326,12 +333,10 @@ body {
   }
 
   .text-glow {
-    /* Usar hsl con opacidad para glow, y primary */
     text-shadow: 0 0 20px hsla(var(--primary), 0.5);
   }
 
   .dark .text-glow {
-    /* Ajustar glow para modo oscuro, más sutil */
     text-shadow: 0 0 5px hsla(var(--primary), 0.3);
   }
 
@@ -372,7 +377,6 @@ body {
 
 /* Grid pattern */
 .grid-pattern {
-  /* Colores más claros para el patrón de la cuadrícula en modo claro */
   background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
     linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
   background-size: 4rem 4rem;
@@ -380,7 +384,6 @@ body {
 }
 
 .dark .grid-pattern {
-  /* Colores más oscuros para el patrón de la cuadrícula en modo oscuro */
   background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
     linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
 }
@@ -451,7 +454,6 @@ body {
 }
 
 .aurora-light-1 {
-  /* Usar primary y accent para un gradiente coherente */
   background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
   width: 300px;
   height: 300px;
@@ -461,8 +463,7 @@ body {
 }
 
 .aurora-light-2 {
-  /* Usar primary y un color complementario */
-  background: linear-gradient(45deg, hsl(200 80% 45%), hsl(var(--primary))); /* Azul cian a Primary */
+  background: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--primary)));
   width: 200px;
   height: 200px;
   top: 60%;
@@ -471,8 +472,7 @@ body {
 }
 
 .aurora-light-3 {
-  /* Usar accent y un color vibrante para contraste */
-  background: linear-gradient(45deg, hsl(var(--accent)), hsl(0 70% 60%)); /* Accent a un rojo-rosa */
+  background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--destructive)));
   width: 250px;
   height: 250px;
   bottom: 20%;
@@ -481,8 +481,7 @@ body {
 }
 
 .aurora-light-4 {
-  /* Usar otro par de colores para diversidad, quizás un verde y un azul */
-  background: linear-gradient(45deg, hsl(140 70% 45%), hsl(200 80% 45%)); /* Verde a Azul cian */
+  background: linear-gradient(45deg, hsl(140 70% 45%), hsl(var(--secondary)));
   width: 180px;
   height: 180px;
   top: 30%;
@@ -525,8 +524,7 @@ html {
   bottom: -2.5rem;
   left: 24px;
   width: 2px;
-  /* El gradiente se mantiene con primary */
-  background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--primary)));
+  background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--secondary)));
 }
 
 @media (max-width: 768px) {
@@ -554,17 +552,17 @@ html {
 }
 
 .whatsapp-chatbot .chatbox::-webkit-scrollbar-track {
-  background: hsla(var(--background), 0.05); /* Usar background con opacidad */
+  background: hsla(var(--background), 0.05);
   border-radius: 10px;
 }
 
 .whatsapp-chatbot .chatbox::-webkit-scrollbar-thumb {
-  background: hsla(var(--foreground), 0.1); /* Usar foreground con opacidad */
+  background: hsla(var(--foreground), 0.1);
   border-radius: 10px;
 }
 
 .whatsapp-chatbot .chatbox::-webkit-scrollbar-thumb:hover {
-  background: hsla(var(--foreground), 0.2); /* Usar foreground con opacidad */
+  background: hsla(var(--foreground), 0.2);
 }
 
 /* Add tag styles for project cards */
@@ -577,27 +575,27 @@ html {
 }
 
 .tag-developer {
-  background-color: hsla(var(--primary), 0.1); /* Usar primary con opacidad */
+  background-color: hsla(var(--primary), 0.1);
   color: hsl(var(--primary));
 }
 
 .tag-design {
-  background-color: hsla(var(--accent), 0.1); /* Usar accent con opacidad */
+  background-color: hsla(var(--accent), 0.1);
   color: hsl(var(--accent));
 }
 
 .tag-data {
-  background-color: hsla(140 70% 45%, 0.1); /* Nuevo color: un verde */
+  background-color: hsla(140 70% 45%, 0.1);
   color: hsl(140 70% 45%);
 }
 
 .tag-ai {
-  background-color: hsla(40 90% 50%, 0.1); /* Nuevo color: un naranja vibrante */
+  background-color: hsla(40 90% 50%, 0.1);
   color: hsl(40 90% 50%);
 }
 
 .tag-ecommerce {
-  background-color: hsla(330 70% 60%, 0.1); /* Nuevo color: un rosa fuerte */
+  background-color: hsla(330 70% 60%, 0.1);
   color: hsl(330 70% 60%);
 }
 
@@ -612,7 +610,6 @@ html {
 /* Only apply complex glitch effect on hover and on capable devices */
 @media (prefers-reduced-motion: no-preference) {
   .glitch-effect:hover {
-    /* Sombras usando primary y accent para coherencia de paleta */
     text-shadow: 0.05em 0 0 hsla(var(--primary), 0.75), -0.025em -0.05em 0 hsla(var(--accent), 0.75), 0.025em 0.05em 0 hsla(var(--foreground), 0.75);
     animation: glitch 500ms infinite;
   }

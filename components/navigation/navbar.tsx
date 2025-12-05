@@ -10,9 +10,9 @@ import { useOnClickOutside } from '@/hooks/use-click-outside';
 
 const navItems = [
   { href: '#about', label: { en: 'About', es: 'Acerca' } },
-  { href: '#skills', label: { en: 'Skills', es: 'Habilidades' } },
   { href: '#portfolio', label: { en: 'Portfolio', es: 'Portafolio' } },
   { href: '#services', label: { en: 'Services', es: 'Servicios' } },
+  { href: '#testimonials', label: { en: 'Testimonials', es: 'Testimonios' } },
   { href: '#contact', label: { en: 'Contact', es: 'Contacto' } },
 ];
 

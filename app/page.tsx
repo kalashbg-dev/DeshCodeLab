@@ -10,7 +10,6 @@ import Navbar from '@/components/navigation/navbar';
 
 // Lazy loading solo para secciones que no están en el viewport inicial
 const About = lazy(() => import('@/components/sections/about'));
-const Skills = lazy(() => import('@/components/sections/skills'));
 const Portfolio = lazy(() => import('@/components/sections/portfolio'));
 const Services = lazy(() => import('@/components/sections/services'));
 const Testimonials = lazy(() => import('@/components/sections/testimonials'));
@@ -70,10 +69,6 @@ export default function Home() {
         {/* Secciones de la página con lazy loading */}
         <Suspense fallback={<SectionSkeleton />}>
           <About />
-        </Suspense>
-
-        <Suspense fallback={<SectionSkeleton />}>
-          <Skills />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton />}>
