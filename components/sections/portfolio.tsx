@@ -209,7 +209,7 @@ export default function Portfolio() {
               layout
             >
               <GlassCard className="overflow-hidden group hover:scale-105 transition-all duration-300">
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden border-b border-border/50">
                   <Image
                     src={
                       typeof project.image === "string"
