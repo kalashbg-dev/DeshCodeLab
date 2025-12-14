@@ -245,7 +245,7 @@ export default function Portfolio() {
                         href={project.links.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                        className="p-2 bg-black/60 backdrop-blur-md rounded-full hover:bg-black/80 transition-all duration-300 shadow-lg border border-white/10"
                         aria-label="View Demo"
                       >
                         <ExternalLink className="h-4 w-4 text-white" />
@@ -256,7 +256,7 @@ export default function Portfolio() {
                         href={project.links.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                        className="p-2 bg-black/60 backdrop-blur-md rounded-full hover:bg-black/80 transition-all duration-300 shadow-lg border border-white/10"
                         aria-label="View Code"
                       >
                         <Github className="h-4 w-4 text-white" />
