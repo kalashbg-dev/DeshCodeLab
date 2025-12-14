@@ -33,7 +33,7 @@ const projects = [
       en: "A tool for managing exchange rates, tracking conversions, and analyzing historical data.",
       es: "Una herramienta para gestionar tasas de cambio, rastrear conversiones y analizar datos históricos.",
     },
-    image: "converter.webp",
+    image: "/converter.webp",
     technologies: [
       "Typescript",
       "Tailwind CSS",
@@ -69,7 +69,7 @@ const projects = [
       en: "An automated tool to quickly set up a professional development environment",
       es: "Una herramienta automatizada para configurar rápidamente un entorno de desarrollo profesional",
     },
-    image: "mintdev.webp",
+    image: "/mintdev.webp",
     technologies: ["Shell"],
     category: "tools",
     links: {
@@ -84,7 +84,7 @@ const projects = [
       en: "Customizable and trainable Chatbot model for entrepreneurs and websites",
       es: "Modelo de Chatbot personalizable y entrenable para emprendedores y páginas web",
     },
-    image: "ChatBotDEMo.webp",
+    image: "/ChatBotDEMo.webp",
     technologies: ["JavaScript", "CSS", "HTML"],
     category: "ai",
     links: {
@@ -101,8 +101,8 @@ const projects = [
       es: "WebApp de análisis de criptomonedas con dashboard, noticias, portafolio, diario de trading, calculadora de posiciones, rastreador de ballenas e IA personal.",
     },
     image: {
-      en: "CoinLarimarEN.webp",
-      es: "CoinLarimarES.webp",
+      en: "/CoinLarimarEN.webp",
+      es: "/CoinLarimarES.webp",
     },
     technologies: ["Flutter", "Firebase", "Make", "Vertex AI"],
     category: "web",
@@ -120,13 +120,28 @@ const projects = [
       es: "Una plataforma de e-commerce de dropshipping de fragancias",
     },
     image: {
-      en: "SillageWorld.webp",
-      es: "MundoSillage.webp",
+      en: "/SillageWorld.webp",
+      es: "/MundoSillage.webp",
     },
     technologies: ["Vue.js", "Node.js", "MongoDB", "Stripe"],
     category: "web",
     links: {
       demo: "#",
+      github: "#",
+    },
+  },
+  {
+    id: 8,
+    title: "Feel The Healing",
+    description: {
+      en: "Comprehensive wellness services website developed in WordPress, focused on user accessibility and appointment management via instant messaging.",
+      es: "Web de servicios de bienestar integral desarrollada en WordPress, enfocada en la accesibilidad del usuario y la gestión de citas mediante mensajería instantánea.",
+    },
+    image: "/feelthehealing.webp",
+    technologies: ["Wordpress", "Php", "CSS"],
+    category: "web",
+    links: {
+      demo: "https://feelthehealing.org",
       github: "#",
     },
   },
