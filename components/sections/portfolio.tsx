@@ -1,4 +1,5 @@
-<div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>;
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Filter } from "lucide-react";
@@ -11,6 +12,36 @@ import Image from "next/image";
 const projects = [
   {
     id: 1,
+    title: "Feel The Healing",
+    description: {
+      en: "Comprehensive wellness services website developed in WordPress, focused on user accessibility and appointment management via instant messaging.",
+      es: "Web de servicios de bienestar integral desarrollada en WordPress, enfocada en la accesibilidad del usuario y la gestión de citas mediante mensajería instantánea.",
+    },
+    image: "/feelthehealing.webp",
+    technologies: ["Wordpress", "Php", "CSS"],
+    category: "web",
+    links: {
+      demo: "https://feelthehealing.org",
+      github: "#",
+    },
+  },
+  {
+    id: 2,
+    title: "Kairos Experiences",
+    description: {
+      en: "Web Recovery & WPO: Server diagnostics and database restoration using raw SQL. Optimization of PHP processes and CSS style regeneration for speed and stability.",
+      es: "Recuperación de Web & WPO: Diagnóstico de servidor y restauración de base de datos mediante SQL crudo. Optimización de procesos PHP y regeneración de estilos CSS para velocidad y estabilidad.",
+    },
+    image: "/kairos-banner.webp",
+    technologies: ["PHP", "SQL", "CSS", "WPO"],
+    category: "web",
+    links: {
+      demo: "https://kairosexperiences.com",
+      github: "#",
+    },
+  },
+  {
+    id: 3,
     title: "Agrodash RD",
     description: {
       en: "Platform for Dominican Interday Market Analysis with Advanced Statistical KPIs, Insights with filters and Prediction Models",
@@ -20,14 +51,12 @@ const projects = [
     technologies: ["Python", "Streamlit", "Prophet", "CSS"],
     category: "data",
     links: {
-      demo: "#", //dockerizar y desplegar en render
-      // demo: "https://agrodashrd.onrender.com",
+      demo: "#",
       github: `${process.env.NEXT_PUBLIC_GITHUB}/AgroDashRD/`,
     },
   },
-
   {
-    id: 2,
+    id: 4,
     title: "Currency Converter",
     description: {
       en: "A tool for managing exchange rates, tracking conversions, and analyzing historical data.",
@@ -48,7 +77,7 @@ const projects = [
     },
   },
   {
-    id: 3,
+    id: 5,
     title: "Hojutsu Bot",
     description: {
       en: "Telegram Group Management Bot Template",
@@ -63,7 +92,7 @@ const projects = [
     },
   },
   {
-    id: 4,
+    id: 6,
     title: "MintDev- For Linux Mint",
     description: {
       en: "An automated tool to quickly set up a professional development environment",
@@ -78,7 +107,7 @@ const projects = [
     },
   },
   {
-    id: 5,
+    id: 7,
     title: "ChatBot DEMO",
     description: {
       en: "Customizable and trainable Chatbot model for entrepreneurs and websites",
@@ -92,9 +121,8 @@ const projects = [
       github: `${process.env.NEXT_PUBLIC_GITHUB}/ChatbotM-demo/`,
     },
   },
-
   {
-    id: 6,
+    id: 8,
     title: "CoinLarimar",
     description: {
       en: "Crypto analysis WebApp with dashboard, news, portfolio, trading journal, position calculator, whale tracker, and personal AI.",
@@ -111,9 +139,8 @@ const projects = [
       github: "#",
     },
   },
-
   {
-    id: 7,
+    id: 9,
     title: "SillageWorld",
     description: {
       en: "A fragrance dropshipping e-commerce platform",
@@ -127,21 +154,6 @@ const projects = [
     category: "web",
     links: {
       demo: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 8,
-    title: "Feel The Healing",
-    description: {
-      en: "Comprehensive wellness services website developed in WordPress, focused on user accessibility and appointment management via instant messaging.",
-      es: "Web de servicios de bienestar integral desarrollada en WordPress, enfocada en la accesibilidad del usuario y la gestión de citas mediante mensajería instantánea.",
-    },
-    image: "/feelthehealing.webp",
-    technologies: ["Wordpress", "Php", "CSS"],
-    category: "web",
-    links: {
-      demo: "https://feelthehealing.org",
       github: "#",
     },
   },
