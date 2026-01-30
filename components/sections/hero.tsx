@@ -33,6 +33,7 @@ const SOCIAL_LINKS = [
 export default function Hero() {
   const { language } = useLanguage();
   const [mounted, setMounted] = useState(false);
+  const [showCvTooltip, setShowCvTooltip] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -184,24 +185,40 @@ export default function Hero() {
                 </div>
               </div>
 
-              <a 
-                href={heroContent.cvUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block"
-                aria-label="Descargar CV"
+              <motion.div
+                className="absolute -top-4 -right-4 z-50"
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                onMouseEnter={() => setShowCvTooltip(true)}
+                onMouseLeave={() => setShowCvTooltip(false)}
               >
-                <motion.div
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-                  className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:bg-accent hover:scale-110 transition-all duration-300 active:bg-secondary active:scale-110 md:active:transform-none focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                  whileHover={{ scale: 1.1 }}
-                  role="button"
-                  tabIndex={0}
+                  {showCvTooltip && (
+                    <div
+                      className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-popover text-popover-foreground text-sm font-medium rounded-md shadow-lg whitespace-nowrap pointer-events-none border border-border/50 backdrop-blur-sm"
+                    >
+                      {language === 'es' ? 'Ver CV' : 'View CV'}
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-popover rotate-45 border-b border-r border-border/50" />
+                    </div>
+                  )}
+
+                <a
+                  href={heroContent.cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Descargar CV"
                 >
-                  <span className="font-bold">CV</span>
-                </motion.div>
-              </a>
+                    <motion.div
+                        className="bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:bg-accent transition-colors duration-300 active:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        role="button"
+                        tabIndex={0}
+                    >
+                        <span className="font-bold">CV</span>
+                    </motion.div>
+                </a>
+              </motion.div>
             </motion.div>
           </div>
         </div>
