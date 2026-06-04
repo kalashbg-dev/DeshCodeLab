@@ -18,13 +18,7 @@ export default function About() {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 })
 
   return (
-    <section ref={ref} id="about" className="py-20 bg-muted/30 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-      </div>
-
+    <section ref={ref} id="about" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,13 +26,13 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             {language === "es" ? "Acerca de Mí" : "About Me"}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {language === "es"
-              ? "Soy un profesional apasionado por transformar datos en soluciones innovadoras que impulsan el crecimiento empresarial."
-              : "I'm a passionate professional focused on transforming data into innovative solutions that drive business growth."}
+              ? "Transformo datos en soluciones web de alto rendimiento."
+              : "I transform data into high-performance web solutions."}
           </p>
         </motion.div>
 
@@ -51,24 +45,13 @@ export default function About() {
             className="space-y-6"
           >
             <GlassCard className="p-6">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">
-                {language === "es" ? "Mi Historia" : "My Story"}
+              <h3 className="text-xl font-semibold mb-3 text-primary">
+                {language === "es" ? "Enfoque Técnico" : "Technical Focus"}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 {language === "es"
-                  ? "Con una sólida base en liderazgo empresarial, ahora me enfoco exclusivamente en el análisis de datos y el desarrollo web full-stack. Construyo soluciones eficientes y escalables que transforman datos brutos en insights claros y accionables, generando valor real para las empresas."
-                  : "With a strong foundation in business leadership, I now focus exclusively on data analysis and full-stack web development. I build efficient, scalable solutions that transform raw data into clear, actionable insights, driving real value for businesses."}
-              </p>
-            </GlassCard>
-
-            <GlassCard className="p-6">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">
-                {language === "es" ? "Mi Enfoque" : "My Approach"}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {language === "es"
-                  ? "Creo en la importancia de entender profundamente las necesidades del negocio antes de proponer soluciones técnicas. Cada proyecto es una oportunidad para crear algo único que genere valor real y duradero."
-                  : "I believe in the importance of deeply understanding business needs before proposing technical solutions. Every project is an opportunity to create something unique that generates real and lasting value."}
+                  ? "Especializado en análisis de datos y desarrollo web. Construyo soluciones escalables y dashboards orientados a resultados."
+                  : "Specialized in data analysis and web development. I build scalable solutions and results-oriented dashboards."}
               </p>
             </GlassCard>
           </motion.div>

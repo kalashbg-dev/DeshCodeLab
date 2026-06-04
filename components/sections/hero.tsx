@@ -6,7 +6,6 @@ import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import Image from 'next/image';
 import TypingAnimation from '@/components/ui/typing-animation';
-import ParticleField from '@/components/ui/particle-field';
 import { Button } from '@/components/ui/button';
 
 const SOCIAL_LINKS = [
@@ -42,14 +41,14 @@ export default function Hero() {
   const heroContent = useMemo(() => ({
     greeting: language === 'es' ? '¡Hola! Soy' : 'Hello! I\'m',
     description: language === 'es'
-      ? 'Transformo datos complejos en insights accionables y construyo aplicaciones web robustas que impulsan el crecimiento empresarial.'
-      : 'I transform complex data into actionable insights and build robust web applications that drive business growth.',
-    ctaPrimary: language === 'es' ? 'Contactar' : 'Get In Touch',
-    ctaSecondary: language === 'es' ? 'Ver Portafolio' : 'View Portfolio',
+      ? 'Desarrollo web y análisis de datos enfocados en el rendimiento y la conversión.'
+      : 'Web development and data analysis focused on performance and conversion.',
+    ctaPrimary: language === 'es' ? 'Contactar por WhatsApp' : 'Contact via WhatsApp',
+    ctaSecondary: language === 'es' ? 'Enviar Email' : 'Send Email',
     scrollText: language === 'es' ? 'Desplazar' : 'Scroll',
     typingTexts: language === 'es' 
-      ? ['Analista de Datos', 'Desarrollador FullStack', 'Especialista en BI']
-      : ['Data Analyst', 'FullStack Developer', 'BI Specialist'],
+      ? ['Analista de Datos', 'Desarrollador Web', 'Optimización SEO']
+      : ['Data Analyst', 'Web Developer', 'SEO Optimization'],
     cvUrl: language === 'es' ? '/assets/ES_CV_Kalashnikov_Bello_FS.pdf' : '/assets/EN_CV_Kalashnikov_Bello_FS.pdf',
   }), [language]);
 
@@ -65,17 +64,10 @@ export default function Hero() {
   return (
     <section 
       id="hero"
-      className="relative min-h-[100dvh] md:min-h-0 md:h-auto md:py-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background"
+      className="relative min-h-[100dvh] md:min-h-0 md:h-auto md:py-20 flex items-center justify-center overflow-hidden bg-background"
       role="banner"
       aria-label="Sección principal"
     >
-      <div className="absolute inset-0 overflow-hidden">
-        <ParticleField />
-      </div>
-
-      <div className="absolute top-1/4 left-[10%] w-[80vw] h-[80vw] max-w-[24rem] max-h-[24rem] bg-primary/20 rounded-full blur-3xl animate-pulse pointer-events-none" />
-      <div className="absolute bottom-1/4 right-[10%] w-[80vw] h-[80vw] max-w-[24rem] max-h-[24rem] bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000 pointer-events-none" />
-
       <div className="container mx-auto px-4 relative z-10 py-10 md:py-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -123,7 +115,10 @@ export default function Hero() {
               >
                 <Button
                   size="lg"
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => {
+                    const url = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP}?text=${encodeURIComponent(language === 'es' ? '¡Hola! Me gustaría más información.' : 'Hello! I would like more information.')}`;
+                    window.open(url, "_blank");
+                  }}
                   className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   aria-label={heroContent.ctaPrimary}
                 >
@@ -133,7 +128,9 @@ export default function Hero() {
                 <Button
                   variant="outline"
                   size="lg"
-                  onClick={() => scrollToSection('portfolio')}
+                  onClick={() => {
+                     window.location.href = `mailto:${process.env.NEXT_PUBLIC_EMAIL || 'contact@deshcodelab.com'}`;
+                  }}
                   className="px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   aria-label={heroContent.ctaSecondary}
                 >
