@@ -182,12 +182,6 @@ export default function Portfolio() {
       id="portfolio"
       className="py-20 bg-muted/30 relative overflow-hidden"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -195,13 +189,13 @@ export default function Portfolio() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {language === "es" ? "Mi Portafolio" : "My Portfolio"}
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            {language === "es" ? "Portafolio" : "Portfolio"}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {language === "es"
-              ? "Una selección de proyectos que demuestran mi experiencia en desarrollo y análisis de datos"
-              : "A selection of projects that showcase my expertise in development and data analysis"}
+              ? "Proyectos recientes enfocados en resultados y rendimiento."
+              : "Recent projects focused on results and performance."}
           </p>
         </motion.div>
 
@@ -257,7 +251,7 @@ export default function Portfolio() {
                         href={project.links.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-black/60 backdrop-blur-md rounded-full hover:bg-black/80 transition-all duration-300 shadow-lg border border-white/10"
+                        className="p-2 bg-black/80 rounded-full hover:bg-black transition-all duration-300 shadow-sm border border-white/20"
                         aria-label="View Demo"
                       >
                         <ExternalLink className="h-4 w-4 text-white" />
@@ -268,7 +262,7 @@ export default function Portfolio() {
                         href={project.links.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-black/60 backdrop-blur-md rounded-full hover:bg-black/80 transition-all duration-300 shadow-lg border border-white/10"
+                        className="p-2 bg-black/80 rounded-full hover:bg-black transition-all duration-300 shadow-sm border border-white/20"
                         aria-label="View Code"
                       >
                         <Github className="h-4 w-4 text-white" />

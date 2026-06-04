@@ -158,7 +158,7 @@ body {
 
   /* Hybrid Glass-Neo-Brutalist Card */
   .glass-card {
-    @apply bg-card/80 backdrop-blur-[2px] border-2 border-primary/20 rounded-lg shadow-[4px_4px_0px_0px_rgba(var(--primary),0.1)] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(var(--primary),0.2)] transition-all duration-300;
+    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-300;
   }
 
   /* Gradient text */
@@ -349,15 +349,11 @@ body {
 
 /* Grid pattern */
 .grid-pattern {
-  background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
-  background-size: 4rem 4rem;
-  opacity: 0.2;
+  display: none;
 }
 
 .dark .grid-pattern {
-  background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+  display: none;
 }
 
 /* Animations - optimized */
@@ -405,60 +401,14 @@ body {
 
 /* Aurora effect */
 .aurora-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
+  display: none;
 }
 
 .aurora-light-1,
 .aurora-light-2,
 .aurora-light-3,
 .aurora-light-4 {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.3;
-  animation: aurora 8s ease-in-out infinite;
-}
-
-.aurora-light-1 {
-  background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
-  width: 300px;
-  height: 300px;
-  top: 10%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.aurora-light-2 {
-  background: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--primary)));
-  width: 200px;
-  height: 200px;
-  top: 60%;
-  right: 20%;
-  animation-delay: 2s;
-}
-
-.aurora-light-3 {
-  background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--destructive)));
-  width: 250px;
-  height: 250px;
-  bottom: 20%;
-  left: 30%;
-  animation-delay: 4s;
-}
-
-.aurora-light-4 {
-  background: linear-gradient(45deg, hsl(140 70% 45%), hsl(var(--secondary)));
-  width: 180px;
-  height: 180px;
-  top: 30%;
-  right: 10%;
-  animation-delay: 6s;
+  display: none;
 }
 
 /* Scroll behavior */
