@@ -54,7 +54,7 @@ export default function Testimonials() {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 })
 
   return (
-    <section ref={ref} id="testimonials" className="py-20 bg-background relative overflow-hidden">
+    <div ref={ref} className="py-20 bg-background relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -123,6 +123,6 @@ export default function Testimonials() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

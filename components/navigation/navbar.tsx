@@ -29,15 +29,19 @@ export default function Navbar() {
   useOnClickOutside(mobileMenuRef, () => setIsOpen(false));
   useOnClickOutside(languageMenuRef, () => setIsLanguageOpen(false));
 
-  // Detectar scroll para navbar transparente
+  // Detectar scroll para navbar transparente y cerrar menús móviles
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      // Close mobile and language menus on scroll if they are open
+      if (isOpen) setIsOpen(false);
+      if (isLanguageOpen) setIsLanguageOpen(false);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isOpen, isLanguageOpen]);
 
   // Detectar sección activa para navegación
   useEffect(() => {
@@ -67,14 +71,6 @@ export default function Navbar() {
       setIsLanguageOpen(false);
     }
   }, []);
-
-  // Manejar navegación por teclado
-  const handleKeyDown = useCallback((event: React.KeyboardEvent, href: string) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      scrollToSection(href);
-    }
-  }, [scrollToSection]);
 
   // Cambiar idioma
   const toggleLanguage = useCallback(() => {
@@ -131,10 +127,13 @@ export default function Navbar() {
               const isActive = activeSection === sectionId;
               
               return (
-                <button
+                <a
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  onKeyDown={(e) => handleKeyDown(e, item.href)}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
                   className={`relative px-3 py-2 text-sm font-medium transition-colors rounded-md ${
                     isActive
                       ? 'text-primary bg-primary/10'
@@ -152,7 +151,7 @@ export default function Navbar() {
                       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                     />
                   )}
-                </button>
+                </a>
               );
             })}
           </div>
@@ -252,10 +251,13 @@ export default function Navbar() {
                   const isActive = activeSection === sectionId;
                   
                   return (
-                    <button
+                    <a
                       key={item.href}
-                      onClick={() => scrollToSection(item.href)}
-                      onKeyDown={(e) => handleKeyDown(e, item.href)}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(item.href);
+                      }}
                       className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                         isActive
                           ? 'text-primary bg-primary/10 border border-primary/20'
@@ -265,7 +267,7 @@ export default function Navbar() {
                       aria-current={isActive ? 'page' : undefined}
                     >
                       {language === 'es' ? item.label.es : item.label.en}
-                    </button>
+                    </a>
                   );
                 })}
                 

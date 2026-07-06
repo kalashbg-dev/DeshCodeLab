@@ -52,7 +52,7 @@ export default function Services() {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 })
 
   return (
-    <section ref={ref} id="services" className="py-20 bg-background relative overflow-hidden">
+    <div ref={ref} className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,6 +126,6 @@ export default function Services() {
           </Button>
         </motion.div>
       </div>
-    </section>
+    </div>
   )
 }

@@ -18,7 +18,7 @@ export default function About() {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 })
 
   return (
-    <section ref={ref} id="about" className="py-20 bg-background relative overflow-hidden">
+    <div ref={ref} className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -84,6 +84,6 @@ export default function About() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
