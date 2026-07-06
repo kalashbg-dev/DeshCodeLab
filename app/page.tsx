@@ -67,25 +67,35 @@ export default function Home() {
         <Hero />
 
         {/* Secciones de la página con lazy loading */}
-        <Suspense fallback={<SectionSkeleton />}>
-          <About />
-        </Suspense>
+        <section id="about">
+          <Suspense fallback={<SectionSkeleton />}>
+            <About />
+          </Suspense>
+        </section>
 
-        <Suspense fallback={<SectionSkeleton />}>
-          <Portfolio />
-        </Suspense>
+        <section id="portfolio">
+          <Suspense fallback={<SectionSkeleton />}>
+            <Portfolio />
+          </Suspense>
+        </section>
 
-        <Suspense fallback={<SectionSkeleton />}>
-          <Services />
-        </Suspense>
+        <section id="services">
+          <Suspense fallback={<SectionSkeleton />}>
+            <Services />
+          </Suspense>
+        </section>
 
-        <Suspense fallback={<SectionSkeleton />}>
-          <Testimonials />
-        </Suspense>
+        <section id="testimonials">
+          <Suspense fallback={<SectionSkeleton />}>
+            <Testimonials />
+          </Suspense>
+        </section>
 
-        <Suspense fallback={<SectionSkeleton />}>
-          <Contact />
-        </Suspense>
+        <section id="contact">
+          <Suspense fallback={<SectionSkeleton />}>
+            <Contact />
+          </Suspense>
+        </section>
 
         <Suspense fallback={<SectionSkeleton />}>
           <Footer />

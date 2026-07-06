@@ -9,7 +9,7 @@ interface UseIntersectionObserverProps {
 
 export function useIntersectionObserver({ threshold = 0.1, rootMargin = "0px" }: UseIntersectionObserverProps = {}) {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<any>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(

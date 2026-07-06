@@ -177,9 +177,8 @@ export default function Portfolio() {
       : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <section
+    <div
       ref={ref}
-      id="portfolio"
       className="py-20 bg-muted/30 relative overflow-hidden"
     >
       <div className="container mx-auto px-4 relative z-10">
@@ -320,6 +319,6 @@ export default function Portfolio() {
           </Button>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }
