@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
@@ -31,12 +31,7 @@ const SOCIAL_LINKS = [
 
 export default function Hero() {
   const { language } = useLanguage();
-  const [mounted, setMounted] = useState(false);
   const [showCvTooltip, setShowCvTooltip] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const heroContent = useMemo(() => ({
     greeting: language === 'es' ? '¡Hola! Soy' : 'Hello! I\'m',
@@ -59,8 +54,6 @@ export default function Hero() {
     }
   }, []);
 
-  if (!mounted) return null;
-
   return (
     <section 
       id="hero"
@@ -71,21 +64,11 @@ export default function Hero() {
       <div className="container mx-auto px-4 relative z-10 py-10 md:py-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6 md:space-y-8"
-            >
+            <div className="space-y-6 md:space-y-8">
               <div className="space-y-4">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-primary font-medium text-lg"
-                >
+                <div className="text-primary font-medium text-lg">
                   {heroContent.greeting}
-                </motion.div>
+                </div>
 
                 <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                   Kalashnikov
@@ -98,21 +81,11 @@ export default function Hero() {
                 </div>
               </div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-xl text-muted-foreground max-w-lg"
-              >
+              <p className="text-xl text-muted-foreground max-w-lg">
                 {heroContent.description}
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-wrap gap-4"
-              >
+              <div className="flex flex-wrap gap-4">
                 <Button
                   size="lg"
                   onClick={() => {
@@ -136,16 +109,9 @@ export default function Hero() {
                 >
                   {heroContent.ctaSecondary}
                 </Button>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="flex gap-4"
-                role="group"
-                aria-label="Enlaces sociales"
-              >
+              <div className="flex gap-4" role="group" aria-label="Enlaces sociales">
                 {SOCIAL_LINKS.map((social) => (
                   <a
                     key={social.name}
@@ -158,15 +124,10 @@ export default function Hero() {
                     <social.icon className="h-5 w-5" aria-hidden="true" />
                   </a>
                 ))}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="relative w-72 h-96 md:w-80 md:h-[450px] mx-auto">
                 <div className="w-full h-full rounded-xl overflow-hidden border-4 border-white/20 shadow-xl transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl hover:border-white/30 max-w-xs mx-auto">
                   <Image
@@ -216,7 +177,7 @@ export default function Hero() {
                     </motion.div>
                 </a>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

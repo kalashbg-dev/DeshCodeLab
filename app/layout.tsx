@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: '%s | DeshCode Lab',
   },
   description:
-    'Portfolio profesional de Kalashnikov Bello, especialista en análisis de datos, desarrollo FullStack y soluciones de Business Intelligence. Transformando datos en insights accionables.',
+    'Portfolio de Kalashnikov Bello: Data Analyst y FullStack Developer experto en Dashboards, Wordpress, Business Intelligence y SEO. Soluciones web optimizadas.',
   keywords: [
     'Dashboards',
     'Wordpress',

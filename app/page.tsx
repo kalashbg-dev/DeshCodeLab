@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, Suspense, lazy } from 'react';
-import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
 // Importación directa de componentes críticos para evitar parpadeos y carga diferida inicial
@@ -54,12 +53,7 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative flex flex-col min-h-full">
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="relative flex-1 flex flex-col w-full overflow-x-hidden"
-      >
+      <main className="relative flex-1 flex flex-col w-full overflow-x-hidden">
         {/* Navegación - Carga inmediata */}
         <Navbar />
 
@@ -100,7 +94,7 @@ export default function Home() {
         <Suspense fallback={<SectionSkeleton />}>
           <Footer />
         </Suspense>
-      </motion.main>
+      </main>
     </div>
   );
 }
